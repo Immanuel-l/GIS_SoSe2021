@@ -11,3 +11,12 @@
 - Internetprotokolle
 - HTML, Web Standards
 - Web Browser
+
+## HTML Basics
+
+- Hyper Text Markup Language
+- HTML Dokumentstruktur
+- Metadaten
+- Elemente
+- DOM
+- im Browser
