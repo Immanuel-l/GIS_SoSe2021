@@ -30,7 +30,7 @@
 - "relativ" vs "absolut"
 
 
-#1.2 HTML Elemente
+# 1.2 HTML Elemente
 
 ## HTML Audio und Video
 - das *Audio*-Element
