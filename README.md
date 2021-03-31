@@ -1,5 +1,6 @@
 # GIS_SoSe2021
 
+
 # 1.1 Grundlagen HTML
 
 ## Einführung in die Thematik
@@ -27,3 +28,22 @@
 - Verweise (aka "Links")
 - "intern" vs "extern"
 - "relativ" vs "absolut"
+
+
+#1.2 HTML Elemente
+
+## HTML Audio und Video
+- das *Audio*-Element
+- das *Video*-Element
+- MIME Types
+- Videoformate
+- Audioformate
+- Datendurchsatz (aka Bandbreite)
+- Live Streaming
+
+## HTML Weiterführend
+- Seitenstruktur (semantisch)
+- Viele viele Elemente https://wiki.selfhtml.org/extensions/Selfhtml/example.php/Beispiel:HTML-Kategorien.html
+- *inline* und *block*
+
+## Inspektor und Browserunterschiede
