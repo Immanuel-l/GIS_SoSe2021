@@ -7,8 +7,8 @@
     <title>Kontakt</title>
   </head>
   <body>
-    <header>
-      <h1>Kontakt</h1>
+    <header id="seitenanfang">
+      <h1>Portfolio</h1>
       <div class="socialmedia">
         <a href="https://instagram.com" target="_blank"><img src="bilder/socialmedia/instagram.svg" alt="Instagram"></a>
         <a href="https://twitter.com" target="_blank"><img src="bilder/socialmedia/twitter.svg" alt="Twitter"></a>
@@ -26,25 +26,26 @@
 
     <div class="container">
 
-      <section>
-        <form action="contact.html" method="post">
-          <div class="email">
-            <label>E-Mail:</label>
+      <section class="kontakt">
+        <h2>Kontakt</h2>
+        <form>
+            <input type="text" name="vorname" placeholder="Vorname">
+            <input type="text" name="nachname" placeholder="Nachname">
             <input type="text" name="email" placeholder="E-Mail">
-          </div>
-          <div class="nachricht">
-            <label>Nachricht:</label>
-            <textarea name="nachricht" rows="8" cols="80"></textarea>
-          </div>
-          <div class="submit">
-            <input type="submit" name="abschicken" value="Abschicken">
-          </div>
+            <textarea name="nachricht" placeholder="Nachricht" rows="8" cols="80"></textarea>
+            <input class="button" type="submit" name="abschicken" value="Abschicken">
         </form>
       </section>
 
       <footer>
         <hr>
-          <a href="#seitenanfang">Seitenanfang</a>
+        <nav>
+          <ul>
+            <li><a class="link" href="#seitenanfang">Seitenanfang</a></li>
+            <li><a class="link" href="#">Impressum</a></li>
+            <li><a class="link" href="#">Datenschutz</a></li>
+          </ul>
+        </nav>
       </footer>
 
     </div>

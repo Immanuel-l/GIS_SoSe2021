@@ -1,15 +1,32 @@
-html body {
+html, body {
   padding: 0;
   margin: 0;
   border: 0;
   font-family: sans-serif;
   background-image: url("../bilder/bg.png");
   background-repeat: repeat;
+  scroll-behavior: smooth;
 }
 
 a {
   text-decoration: none;
   color: #1A76FB;
+}
+
+.link {
+  text-decoration: overline;
+}
+
+.link:hover {
+  text-decoration: line-through;
+}
+
+#google {
+  font-size: 17px;
+}
+
+#google:hover {
+  text-decoration: underline;
 }
 
 li {
@@ -18,16 +35,65 @@ li {
 
 h2 {
   font-size: 26px;
+  text-align: left;
   color: #497EDE;
   text-transform: uppercase;
 }
 
-img, Video {
-  width: 650px;
-  height: 320px;
-  border-radius: 8px;
+#mich {
+  color: #E85454;
 }
 
+p, article {
+  text-align: left;
+  font-size: 15px;
+}
+
+hr {
+  border: 4px solid #497EDE;
+  border-radius: 4px;
+}
+
+img, Video {
+  display: block;
+  width: 800px;
+  height: 450px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
+  transition: 0.25s 0.2s transform;
+}
+
+#random:hover {
+  transform: scale(0.5) rotate(360deg);
+}
+
+#alt {
+  filter: sepia(50%);
+}
+
+audio {
+  display: block;
+  width: 800px;
+  border: none;
+  border-radius: 8px;
+  background-color: #497EDE;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-panel,
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-volume-slider-container,
+audio::-webkit-media-controls-volume-slider {
+  background-color: #497EDE;
+  color: white;
+  border: none;
+}
 
 .container {
   width: 800px;
@@ -35,14 +101,10 @@ img, Video {
   text-align: center;
 }
 
-.container h2 {
-  text-align: left;
-  margin-left: 30px;
-}
 
-header {
+header{
   width: 400px;
-  height: 300px;
+  height: 200px;
   margin: auto;
 }
 
@@ -55,10 +117,11 @@ header h1 {
 
 header nav {
   position: fixed;
-  top: 1em;
-  right: 2em;
+  top: 0;
+  right: 1em;
   border: 5px solid black;
-  border-radius: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   background-color: black;
   z-index: 1;
 }
@@ -69,8 +132,14 @@ header nav ul {
   flex-direction: row;
 }
 
+footer nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 header nav ul li a {
-  font-size: 20px;
+  font-size: 18px;
   text-transform: uppercase;
   color: white;
   margin: 10px 60px 10px 10px;
@@ -116,4 +185,44 @@ header .socialmedia img:hover {
 
 .portrait:hover {
   filter: none;
+}
+
+.kontakt {
+  display: block;
+  width: 800px;
+  height: 500px;
+}
+
+.kontakt input, textarea {
+  display: block;
+  margin-bottom: 20px;
+  padding: 8px;
+  border: none;
+  background-color: lightgrey;
+  font-size: 16px;
+}
+
+.kontakt textarea {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.kontakt input:focus, textarea:focus {
+  border-radius: 5px;
+  background-color: #497EDE;
+  color: white;
+}
+
+.kontakt input::placeholder, textarea::placeholder {
+  color: white;
+}
+
+.button {
+  color: white;
+}
+
+.button:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+  border-radius: 5px;
 }
