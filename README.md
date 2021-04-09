@@ -47,3 +47,12 @@
 - *inline* und *block*
 
 ## Inspektor und Browserunterschiede
+
+
+# 1.3 CSS
+
+## CSS Eigenschaften
+
+## CSS Selektoren
+
+## Kasskadierung und Vererbung

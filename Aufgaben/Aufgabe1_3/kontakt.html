@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/standard.css">
-    <title>Contact</title>
+    <title>Kontakt</title>
   </head>
   <body>
     <header>
-      <h1>Contact</h1>
+      <h1>Kontakt</h1>
       <div class="socialmedia">
         <a href="https://instagram.com" target="_blank"><img src="bilder/socialmedia/instagram.svg" alt="Instagram"></a>
         <a href="https://twitter.com" target="_blank"><img src="bilder/socialmedia/twitter.svg" alt="Twitter"></a>
@@ -18,8 +18,8 @@
       <nav>
         <ul>
           <li><a href="index.html">Portfolio</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a class="active" href="#">Contact</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a class="active" href="#">Kontakt</a></li>
         </ul>
       </nav>
     </header>
@@ -27,20 +27,16 @@
     <div class="container">
 
       <section>
-        <form action="kontakt.html" method="post">
-          <div>
+        <form action="contact.html" method="post">
+          <div class="email">
             <label>E-Mail:</label>
-          </div>
-          <div>
             <input type="text" name="email" placeholder="E-Mail">
           </div>
-          <div>
+          <div class="nachricht">
             <label>Nachricht:</label>
+            <textarea name="nachricht" rows="8" cols="80"></textarea>
           </div>
-          <div>
-            <textarea name="nachricht" rows="8" cols="80" placeholder="Nachricht"></textarea>
-          </div>
-          <div>
+          <div class="submit">
             <input type="submit" name="abschicken" value="Abschicken">
           </div>
         </form>

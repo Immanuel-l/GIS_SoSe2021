@@ -9,6 +9,7 @@ html body {
 
 a {
   text-decoration: none;
+  color: #1A76FB;
 }
 
 li {
@@ -78,10 +79,12 @@ header nav ul li a {
 
 header nav ul li a:hover:not(.active) {
   color: #497EDE;
+  text-decoration: line-through;
 }
 
 .active {
   color: #497EDE;
+  text-decoration: line-through;
 }
 
 
