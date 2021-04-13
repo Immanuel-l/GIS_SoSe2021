@@ -8,7 +8,7 @@
   </head>
   <body>
     <header id="seitenanfang">
-      <h1>Portfolio</h1>
+      <h1 class="rainbow">Portfolio</h1>
       <div class="socialmedia">
         <a href="https://instagram.com" target="_blank"><img src="bilder/socialmedia/instagram.svg" alt="Instagram"></a>
         <a href="https://twitter.com" target="_blank"><img src="bilder/socialmedia/twitter.svg" alt="Twitter"></a>
@@ -18,7 +18,7 @@
       <nav>
         <ul>
           <li><a href="index.html">Portfolio</a></li>
-          <li><a href="ueber.html">Über</a></li>
+          <li><a class="herzschlag" href="ueber.html">Über</a></li>
           <li><a class="active" href="#">Kontakt</a></li>
         </ul>
       </nav>
@@ -26,12 +26,13 @@
 
     <div class="container">
 
+      <h2>Kontakt</h2>
+
       <section class="kontakt">
-        <h2>Kontakt</h2>
         <form>
             <input type="text" name="vorname" placeholder="Vorname">
             <input type="text" name="nachname" placeholder="Nachname">
-            <input type="text" name="email" placeholder="E-Mail">
+            <input type="email" name="email" placeholder="E-Mail">
             <textarea name="nachricht" placeholder="Nachricht" rows="8" cols="80"></textarea>
             <input class="button" type="submit" name="abschicken" value="Abschicken">
         </form>
