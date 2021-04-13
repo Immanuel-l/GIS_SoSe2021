@@ -203,8 +203,8 @@ header .socialmedia img:hover {
 }
 
 .kontakt textarea {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
 }
 
 .kontakt input:focus, textarea:focus {
