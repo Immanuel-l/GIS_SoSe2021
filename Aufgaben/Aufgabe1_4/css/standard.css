@@ -16,6 +16,12 @@ body {
   margin: auto;
 }
 
+.container > h2 {
+  color: #B1F4BD;
+  text-transform: lowercase;
+  font-size: 2.1em;
+}
+
 a {
   text-decoration: none;
   color: #1A76FB;
@@ -34,13 +40,17 @@ li {
   list-style-type: none;
 }
 
-h2 {
+h2, h3 {
   font-size: 1.4em;
   text-align: left;
   color: #497EDE;
   text-transform: uppercase;
   margin: 10px 0 10px 13px;
   text-shadow: 1px 1px #497EDE;
+}
+
+h3 ~ p {
+  color: #9C71DE;
 }
 
 #mich {
@@ -51,6 +61,10 @@ p, article {
   text-align: left;
   font-size: 0.9em;
   margin: 10px 0 10px 13px;
+}
+
+h2 + p {
+ color: #90A8DE;
 }
 
 hr {
@@ -184,6 +198,7 @@ header .socialmedia img {
   font-size: 1.2em;
   width: 100%;
   height: 100%;
+  transition: 0.25s 0.1s background-color ease, 0.25s 0.1s color ease;
 }
 
 .kontakt input:focus, .kontakt textarea:focus {
@@ -197,6 +212,7 @@ header .socialmedia img {
 }
 
 .button {
+  border-radius: 5px;
   color: white;
   margin-left: 5px;
 }
@@ -312,7 +328,6 @@ header .socialmedia img {
     width: 800px;
     height: 450px;
     margin: 30px auto 30px auto;
-    transition: 0.25s 0.2s transform;
   }
 
   audio {
@@ -399,7 +414,7 @@ header .socialmedia img {
     width: 800px;
     height: 450px;
     margin: 30px auto 30px auto;
-    transition: 0.25s 0.2s transform;
+    transition: 0.3s 0.2s transform ease;
   }
 
   #random:hover {
@@ -425,7 +440,7 @@ header .socialmedia img {
   header nav ul li a {
     padding: 10px 65px;
     font-size: 1.5em;
-    transition: 0.25s 0.1s color;
+    transition: 0.25s 0.1s color ease;
   }
 
   header nav ul li a:hover:not(.active) {
@@ -441,7 +456,7 @@ header .socialmedia img {
     width: 50px;
     height: 50px;
     opacity: 0.5;
-    transition: 0.25s 0.1s opacity;
+    transition: 0.25s 0.1s opacity ease;
   }
 
   header .socialmedia img:hover {
@@ -452,7 +467,7 @@ header .socialmedia img {
     filter: blur(5px);
     width: 540px;
     height: 458px;
-    transition: 0.25s 0.1s filter;
+    transition: 0.25s 0.1s filter ease;
   }
 
   .portrait:hover {
@@ -482,14 +497,22 @@ header .socialmedia img {
 
   .button {
     margin-left: 0px;
-    transition: 0.25s 0.1s background-color;
+    transition: 0.25s 0.1s border-radius ease, 0.25s 0.1s background-color ease;
   }
 
   .button:hover {
     text-decoration: line-through;
     cursor: pointer;
     background-color: #497EDE;
-    border-radius: 5px;
+    border-radius: 0;
+  }
+
+  .links:hover {
+    transform: translate(-100px, 0);
+  }
+
+  .rechts:hover {
+    transform: translate(100px, 0);
   }
 
   .rainbow:hover {
