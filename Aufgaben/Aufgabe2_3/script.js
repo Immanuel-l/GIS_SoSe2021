@@ -12,7 +12,6 @@ var Aufgabe2_3;
     }
     let div = document.createElement("div");
     let numberOfRectangle = 3;
-    let removeNumber = 0;
     createRectangle();
     function createRectangle() {
         for (let i = 0; i < numberOfRectangle; i++) {
@@ -21,7 +20,7 @@ var Aufgabe2_3;
             let divLeft = Math.floor(Math.random() * (1200 - 50)) + 50;
             let divWidth = Math.floor(Math.random() * (500 - 50)) + 50;
             let divHeight = Math.floor(Math.random() * (300 - 50)) + 50;
-            div.setAttribute("id", "rectangle");
+            div.setAttribute("class", "rectangle");
             div.style.position = "absolute";
             div.style.top = divTop + "px";
             div.style.left = divLeft + "px";
@@ -29,7 +28,6 @@ var Aufgabe2_3;
             div.style.height = divHeight + "px";
             div.style.backgroundColor = getRandomColor();
             document.body.appendChild(div);
-            removeNumber++;
         }
     }
     let createButton = document.getElementById("createButton");
@@ -39,9 +37,9 @@ var Aufgabe2_3;
         createRectangle();
     }
     function resetFunction() {
-        while (removeNumber > 0) {
-            document.getElementById("rectangle").remove();
-            removeNumber--;
+        const elements = document.getElementsByClassName("rectangle");
+        while (elements.length > 0) {
+            elements[0].parentNode.removeChild(elements[0]);
         }
     }
     createButton.addEventListener("click", createFunction);
