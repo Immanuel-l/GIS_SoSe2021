@@ -282,38 +282,38 @@ namespace Aufgabe2_2 {
 
     //Aufgabe_3b
 
-    interface Rectangle {
-        positionX: number;
-        positionY: number;
-        width: number;
-        height: number;
-    }
+    // interface Rectangle {
+    //     positionX: number;
+    //     positionY: number;
+    //     width: number;
+    //     height: number;
+    // }
 
 
     //Aufgabe_3c
 
 
-    function createRect(): Rectangle {
-        let randomX: number = Math.floor(Math.random() * 500);
-        let randomY: number = Math.floor(Math.random() * 400);
-        let randomWidth: number = Math.floor(Math.random() * 500);
-        let randomHeight: number = Math.floor(Math.random() * 400);
+    // function createRect(): Rectangle {
+    //     let randomX: number = Math.floor(Math.random() * 500);
+    //     let randomY: number = Math.floor(Math.random() * 400);
+    //     let randomWidth: number = Math.floor(Math.random() * 500);
+    //     let randomHeight: number = Math.floor(Math.random() * 400);
 
-        return {positionX: randomX, positionY: randomY, width: randomWidth, height: randomHeight};
-    }
+    //     return {positionX: randomX, positionY: randomY, width: randomWidth, height: randomHeight};
+    // }
 
     //Aufgabe_3d
 
-    function drawRect(randomRectangle: Rectangle): void {
-        context.fillStyle = "pink";
-        context.fillRect(randomRectangle.positionX, randomRectangle.positionY, randomRectangle.width, randomRectangle.height);
-        context.stroke;
-    }
+    // function drawRect(randomRectangle: Rectangle): void {
+    //     context.fillStyle = "pink";
+    //     context.fillRect(randomRectangle.positionX, randomRectangle.positionY, randomRectangle.width, randomRectangle.height);
+    //     context.stroke;
+    // }
 
-    //Aufgabe_3e
+    // //Aufgabe_3e
 
-    let rectangleArray: Rectangle[] = [];
-    rectangleArray.push(drawRect(createRect()), drawRect(createRect()), drawRect(createRect()));
+    // let rectangleArray: Rectangle[] = [];
+    // rectangleArray.push(drawRect(createRect()), drawRect(createRect()), drawRect(createRect()));
 
 
 }

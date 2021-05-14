@@ -217,22 +217,29 @@ var Aufgabe2_2;
     context.arc(425, 300, 100, 0, 2 * Math.PI, false);
     context.fill();
     context.stroke();
+    //Aufgabe_3b
+    // interface Rectangle {
+    //     positionX: number;
+    //     positionY: number;
+    //     width: number;
+    //     height: number;
+    // }
     //Aufgabe_3c
-    function createRect() {
-        let randomX = Math.floor(Math.random() * 500);
-        let randomY = Math.floor(Math.random() * 400);
-        let randomWidth = Math.floor(Math.random() * 500);
-        let randomHeight = Math.floor(Math.random() * 400);
-        return { positionX: randomX, positionY: randomY, width: randomWidth, height: randomHeight };
-    }
+    // function createRect(): Rectangle {
+    //     let randomX: number = Math.floor(Math.random() * 500);
+    //     let randomY: number = Math.floor(Math.random() * 400);
+    //     let randomWidth: number = Math.floor(Math.random() * 500);
+    //     let randomHeight: number = Math.floor(Math.random() * 400);
+    //     return {positionX: randomX, positionY: randomY, width: randomWidth, height: randomHeight};
+    // }
     //Aufgabe_3d
-    function drawRect(randomRectangle) {
-        context.fillStyle = "pink";
-        context.fillRect(randomRectangle.positionX, randomRectangle.positionY, randomRectangle.width, randomRectangle.height);
-        context.stroke;
-    }
-    //Aufgabe_3e
-    let rectangleArray = [];
-    rectangleArray.push(drawRect(createRect()), drawRect(createRect()), drawRect(createRect()));
+    // function drawRect(randomRectangle: Rectangle): void {
+    //     context.fillStyle = "pink";
+    //     context.fillRect(randomRectangle.positionX, randomRectangle.positionY, randomRectangle.width, randomRectangle.height);
+    //     context.stroke;
+    // }
+    // //Aufgabe_3e
+    // let rectangleArray: Rectangle[] = [];
+    // rectangleArray.push(drawRect(createRect()), drawRect(createRect()), drawRect(createRect()));
 })(Aufgabe2_2 || (Aufgabe2_2 = {}));
 //# sourceMappingURL=script.js.map
