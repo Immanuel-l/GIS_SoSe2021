@@ -5,7 +5,7 @@ namespace Aufgabe2_4 {
 
         sessionStorage.setItem("sunName", parts.suns[index].name);
         sessionStorage.setItem("sunImage", parts.suns[index].image);
-        location.href = "planets.html";
+        location.href = "planet1.html";
     }
 
     showPossibilities(parts.suns);

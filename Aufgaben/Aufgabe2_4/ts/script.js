@@ -10,7 +10,9 @@ var Aufgabe2_4;
         let img = document.createElement("img");
         img.src = _part.image;
         img.addEventListener("click", Aufgabe2_4.sunsHandleSelection);
-        img.addEventListener("click", Aufgabe2_4.planetsHandleSelection);
+        img.addEventListener("click", Aufgabe2_4.planet1HandleSelection);
+        img.addEventListener("click", Aufgabe2_4.planet2HandleSelection);
+        img.addEventListener("click", Aufgabe2_4.planet3HandleSelection);
         img.addEventListener("click", Aufgabe2_4.cometsHandleSelection);
         img.dataset.index = _index.toString();
         div.appendChild(img);
@@ -37,7 +39,9 @@ var Aufgabe2_4;
     }
     Aufgabe2_4.createSelectedParts = createSelectedParts;
     createSelectedParts("sun");
-    createSelectedParts("planet");
+    createSelectedParts("planet1");
+    createSelectedParts("planet2");
+    createSelectedParts("planet3");
     createSelectedParts("comet");
     function createEndSolarSystemParts(_solarSystemPart) {
         let div = document.createElement("div");

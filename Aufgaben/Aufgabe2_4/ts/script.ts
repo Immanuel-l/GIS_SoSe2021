@@ -9,11 +9,13 @@ namespace Aufgabe2_4 {
         let div: HTMLDivElement = document.createElement("div");
         div.classList.add("solarsystempart");
 
-        let img: HTMLImageElement = document.createElement("img");
+        let img: HTMLImageElement = document.createElement("img");    
         img.src = _part.image;
 
         img.addEventListener("click", sunsHandleSelection);
-        img.addEventListener("click", planetsHandleSelection);
+        img.addEventListener("click", planet1HandleSelection);
+        img.addEventListener("click", planet2HandleSelection);
+        img.addEventListener("click", planet3HandleSelection);
         img.addEventListener("click", cometsHandleSelection);
         img.dataset.index = _index.toString();
         div.appendChild(img);
@@ -43,7 +45,9 @@ namespace Aufgabe2_4 {
     }
 
     createSelectedParts("sun");
-    createSelectedParts("planet");
+    createSelectedParts("planet1");
+    createSelectedParts("planet2");
+    createSelectedParts("planet3");
     createSelectedParts("comet");
 
 

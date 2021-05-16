@@ -6,7 +6,7 @@ var Aufgabe2_4;
         let index = Number(target.dataset.index);
         sessionStorage.setItem("sunName", Aufgabe2_4.parts.suns[index].name);
         sessionStorage.setItem("sunImage", Aufgabe2_4.parts.suns[index].image);
-        location.href = "planets.html";
+        location.href = "planet1.html";
     }
     Aufgabe2_4.sunsHandleSelection = sunsHandleSelection;
     Aufgabe2_4.showPossibilities(Aufgabe2_4.parts.suns);
