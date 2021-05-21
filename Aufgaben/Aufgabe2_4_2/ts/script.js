@@ -7,6 +7,7 @@ var Aufgabe2_4_2;
     let endSolarSystem = document.getElementById("solarSystem");
     function loadJSON() {
         parts = JSON.parse(Aufgabe2_4_2.partsJSON);
+        console.log(parts);
     }
     loadJSON();
     let currentParts = [];
@@ -132,11 +133,11 @@ var Aufgabe2_4_2;
         createEndSolarSystemParts("planet2");
         createEndSolarSystemParts("planet3");
         createEndSolarSystemParts("comet");
+        function deleteSession() {
+            sessionStorage.clear();
+        }
+        let btn = document.getElementById("tryagain");
+        btn.addEventListener("click", deleteSession);
     }
-    function deleteSession() {
-        sessionStorage.clear();
-    }
-    let btn = document.getElementById("tryagain");
-    btn.addEventListener("click", deleteSession);
 })(Aufgabe2_4_2 || (Aufgabe2_4_2 = {}));
 //# sourceMappingURL=script.js.map

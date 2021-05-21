@@ -6,6 +6,7 @@ namespace Aufgabe2_4_2 {
 
     function loadJSON(): void {
         parts = JSON.parse(partsJSON);
+        console.log(parts)
     }
     loadJSON();
 
@@ -157,14 +158,14 @@ namespace Aufgabe2_4_2 {
         createEndSolarSystemParts("planet2");
         createEndSolarSystemParts("planet3");
         createEndSolarSystemParts("comet");
-    }
 
-    function deleteSession(): void {
-        sessionStorage.clear();
+        function deleteSession(): void {
+            sessionStorage.clear();
+        }
+    
+        let btn: HTMLButtonElement = <HTMLButtonElement> document.getElementById("tryagain");
+        btn.addEventListener("click", deleteSession);
     }
-
-    let btn: HTMLButtonElement = <HTMLButtonElement> document.getElementById("tryagain");
-    btn.addEventListener("click", deleteSession);
     
 
 
