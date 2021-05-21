@@ -7,7 +7,6 @@ var Aufgabe2_4_2;
     let endSolarSystem = document.getElementById("solarSystem");
     function loadJSON() {
         parts = JSON.parse(Aufgabe2_4_2.partsJSON);
-        console.log(parts);
     }
     loadJSON();
     let currentParts = [];

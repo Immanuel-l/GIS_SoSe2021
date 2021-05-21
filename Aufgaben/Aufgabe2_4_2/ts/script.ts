@@ -6,7 +6,6 @@ namespace Aufgabe2_4_2 {
 
     function loadJSON(): void {
         parts = JSON.parse(partsJSON);
-        console.log(parts)
     }
     loadJSON();
 
