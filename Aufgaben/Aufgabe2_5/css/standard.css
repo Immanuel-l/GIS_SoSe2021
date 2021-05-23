@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: sans-serif;
+}
+
+body {
+	background-color: black;
+}
+
+h1, h2 {
+	text-align: center;
+	color: white;
+	margin-top: 10px;
+}
+
+h2 {
+	font-size: 1em;
+}
+
+#selectionparts {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 200px;
+}
+
+.solarsystempart {
+	display: flex;
+	flex-direction: column;
+	color: white;
+}
+
+.solarsystempart img {
+	width: 200px;
+	cursor: pointer;
+}
+
+.solarsystempart span {
+	text-align: center;
+	font-style: italic;
+	font-size: 1.5em;
+	margin-top: 15px;
+}
+
+
+#selectedparts {
+	display: flex;
+	justify-content: center;
+	margin-top: 100px;
+}
+
+.selectedpart img {
+	width: 100px;
+}
+
+#solarSystem {
+	position: absolute;
+	top: 52%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+#solarSystem img {
+	width: 800px;
+}
+
+#endSolarSystemPartsun img, #endSolarSystemPartplanet1 img, #endSolarSystemPartplanet2 img, #endSolarSystemPartplanet3 img, #endSolarSystemPartcomet img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 180px;
+}
+
+#endSolarSystemPartplanet1 img  {
+	top: 44%;
+	left: 44%;
+	width: 80px;
+	animation: planet1move 6s linear infinite;
+}
+
+#endSolarSystemPartplanet2 img  {
+	top: 44%;
+	left: 44%;
+	width: 80px;
+	animation: planet2move 10s linear infinite;
+}
+
+#endSolarSystemPartplanet3 img  {
+	top: 45%;
+	left: 45%;
+	width: 80px;
+	animation: planet3move 15s linear infinite;
+}
+
+#endSolarSystemPartcomet img {
+	top: 0%;
+	left: 48%;
+	width: 50px;
+	animation: cometmove 17s linear infinite;
+}
+
+#solarSystemSun, #solarSystemPlanet, #solarSystemComet {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#tryagain {
+	position: absolute;
+	left: 50%;
+	top: 95%;
+	transform: translate(-50%, -50%);
+	background-color: #8a1b13;
+  	border: none;
+ 	color: white;
+ 	padding: 15px 32px;
+ 	text-align: center;
+ 	text-decoration: none;
+ 	display: inline-block;
+ 	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.25s 0.1s;
+}
+
+#tryagain:hover {
+	background-color: rgb(216, 27, 27);
+} 
+
+@keyframes planet1move {
+	from { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+}
+
+@keyframes planet2move {
+	from { transform: rotate(0deg) translateX(260px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(260px) rotate(-360deg); }
+}
+
+@keyframes planet3move {
+	from { transform: rotate(0deg) translateX(360px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(360px) rotate(-360deg); }
+}
+
+@keyframes cometmove {
+	from { transform: rotate(0deg) translateX(560px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(560px) rotate(-360deg); }
+}
