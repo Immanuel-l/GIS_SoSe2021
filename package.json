@@ -1,0 +1,21 @@
+{
+  "name": "immanuelgis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgaben/Aufgabe3_1/script/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Immanuel-l/GIS_SoSe2021.git"
+  },
+  "author": "Immanuel Leinert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Immanuel-l/GIS_SoSe2021/issues"
+  },
+  "homepage": "https://github.com/Immanuel-l/GIS_SoSe2021#readme"
+}

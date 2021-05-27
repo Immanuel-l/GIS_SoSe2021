@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    background: #2c3e50;
+    color: white;
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    padding: 40px;
+    text-align: center;
+}
+
+.login input::placeholder {
+    color: white;
+}
+
+.login input[type = "text"], .login input[type = "password"] {
+    display: block;
+    border: 0;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #21638f;
+    border-radius: 24px;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+}
+
+.login input[type = "text"]:focus, .login input[type = "password"]:focus {
+    width: 250px;
+    border-color: #3498db;
+}
+
+.login input[type = "submit"] {
+    display: block;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 12px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.login input[type = "submit"]:hover {
+    background: #3498db;
+}
