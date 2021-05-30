@@ -12,4 +12,7 @@
 ## [2.2 Mehr TypeScript](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe2_2/)
 ## [2.3 DOM und Events](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe2_3/)
 ## [2.4 JSON und LocalStorage](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe2_4_2/)
-## [2.5 2.5 Kommunikation](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe2_5/)
+## [2.5 Kommunikation](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe2_5/)
+
+#  3 Server und Daten
+## [3.1 Serveranbindung](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe3_1/)
