@@ -42,7 +42,7 @@ body {
     border-color: #3498db;
 }
 
-#loginForm input[type = "submit"] {
+#loginForm input[type = "button"] {
     display: block;
     background: none;
     margin: 20px auto;
@@ -56,6 +56,13 @@ body {
     cursor: pointer;
 }
 
-#loginForm input[type = "submit"]:hover {
+#loginForm input[type = "button"]:hover {
     background: #3498db;
+}
+
+#serverResponse {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-70%);
 }

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^15.6.1"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "node Aufgaben/Aufgabe3_1/script/server.js"
