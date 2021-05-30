@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/stylesheet.css">
+    <script src="./script/server.js" defer></script>
     <script src="./script/script.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <form class="login" action="https://gis-example.herokuapp.com" method="GET">
+    <form id="loginForm" action="" method="GET">
         <h1>Login</h1>
-        <input type="text" name="" placeholder="Username">
-        <input type="password" name="" placeholder="Password">
-        <input type="submit" value="Login">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input id="button" type="button" value="Login">
     </form>
 </body>
 </html>

@@ -8,7 +8,7 @@ body {
     color: white;
 }
 
-.login {
+#loginForm {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -18,11 +18,11 @@ body {
     text-align: center;
 }
 
-.login input::placeholder {
+#loginForm input::placeholder {
     color: white;
 }
 
-.login input[type = "text"], .login input[type = "password"] {
+#loginForm input[type = "text"], #loginForm input[type = "password"] {
     display: block;
     border: 0;
     background: none;
@@ -37,12 +37,12 @@ body {
     transition: 0.25s;
 }
 
-.login input[type = "text"]:focus, .login input[type = "password"]:focus {
+#loginForm input[type = "text"]:focus, #loginForm input[type = "password"]:focus {
     width: 250px;
     border-color: #3498db;
 }
 
-.login input[type = "submit"] {
+#loginForm input[type = "submit"] {
     display: block;
     background: none;
     margin: 20px auto;
@@ -56,6 +56,6 @@ body {
     cursor: pointer;
 }
 
-.login input[type = "submit"]:hover {
+#loginForm input[type = "submit"]:hover {
     background: #3498db;
 }

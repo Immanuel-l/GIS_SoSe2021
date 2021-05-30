@@ -56,6 +56,11 @@ var Aufgabe2_2;
     console.log(showInfo(s3));
     */
     class Student {
+        name;
+        firstName;
+        age;
+        matriculationNumber;
+        semester;
         constructor(_name, _firstName, _age, _matriculationNumber, _semester) {
             this.name = _name;
             this.firstName = _firstName;
