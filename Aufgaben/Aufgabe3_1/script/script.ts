@@ -1,8 +1,6 @@
 namespace Aufgabe3_1 {
 
     let button: HTMLElement = document.getElementById("button");
-    let serverMessage: HTMLElement = document.getElementById("serverMessage");
-
     button.addEventListener("click", dataTransfer);
 
     async function dataTransfer(): Promise<void> {
@@ -13,9 +11,5 @@ namespace Aufgabe3_1 {
         let response: Response = await fetch(url);
         let text: string = await response.text();
         console.log(text);
-
-        serverMessage.textContent = text;
-
-
     }
 }

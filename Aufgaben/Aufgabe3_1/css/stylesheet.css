@@ -59,10 +59,3 @@ body {
 #loginForm input[type = "button"]:hover {
     background: #3498db;
 }
-
-#serverResponse {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%,-70%);
-}
