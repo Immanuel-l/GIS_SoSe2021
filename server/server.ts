@@ -1,7 +1,7 @@
 import * as Http from "http";
 import * as Url from "url";
 
-export namespace P_3_1Server {
+export namespace Server {
     console.log("Starting server"); //Auf der Konsole wird Starting server ausgegeben
     let port: number = Number(process.env.PORT); //es wird der port festgelegt
     if (!port)

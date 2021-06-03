@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.P_3_1Server = void 0;
+exports.Server = void 0;
 const Http = require("http");
 const Url = require("url");
-var P_3_1Server;
-(function (P_3_1Server) {
+var Server;
+(function (Server) {
     console.log("Starting server"); //Auf der Konsole wird Starting server ausgegeben
     let port = Number(process.env.PORT); //es wird der port festgelegt
     if (!port)
@@ -32,5 +32,5 @@ var P_3_1Server;
         _response.write(_request.url); //die Request url wird in den response geschrieben
         _response.end(); //die response wird beendet
     }
-})(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
+})(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map
