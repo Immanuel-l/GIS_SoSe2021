@@ -1,4 +1,5 @@
 import * as Http from "http";
+import * as url from "url";
 
 export namespace P_3_1Server {
     console.log("Starting server"); //Auf der Konsole wird Starting server ausgegeben
@@ -22,5 +23,18 @@ export namespace P_3_1Server {
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
         _response.write(_request.url); //die Request url wird in den response geschrieben
         _response.end(); //die response wird beendet
-    } 
+    }
+    
+    let adresse: string = "http://localhost:8080/default.htm?jahr=2017&monat=february";
+    //Adresse parsen (umwandeln):
+    let q: url.UrlWithParsedQuery = url.parse(adresse, true);
+
+    /*Die parse Methode gibt ein Objekt zurück, dass die URL Eigenschaften enthält. So können die fest definierten Eigenschaften einer URL ausgelesen werden:*/
+    console.log(q.host);
+    console.log(q.pathname);
+    console.log(q.search);
+
+    /*Die query Eigenschaft gibt ein Ojekt zurück, dass alle query-string Parameter als Eigenschaften besitzt. So können beliebig gesendete Attribute ausgelesen werden:*/
+    var qdata = q.query;
+    console.log(qdata.monat);
 }
