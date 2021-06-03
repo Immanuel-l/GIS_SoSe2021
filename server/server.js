@@ -23,7 +23,7 @@ var P_3_1Server;
         _response.write(_request.url); //die Request url wird in den response geschrieben
         _response.end(); //die response wird beendet
     }
-    let adresse = "http://localhost:8080/default.htm?jahr=2017&monat=february";
+    let adresse = "http://immanuelgis.herokuapp.com/default.htm?jahr=2017&monat=february";
     //Adresse parsen (umwandeln):
     let q = url.parse(adresse, true);
     /*Die parse Methode gibt ein Objekt zurück, dass die URL Eigenschaften enthält. So können die fest definierten Eigenschaften einer URL ausgelesen werden:*/

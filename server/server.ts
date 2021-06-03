@@ -25,7 +25,7 @@ export namespace P_3_1Server {
         _response.end(); //die response wird beendet
     }
     
-    let adresse: string = "http://localhost:8080/default.htm?jahr=2017&monat=february";
+    let adresse: string = "http://immanuelgis.herokuapp.com/default.htm?jahr=2017&monat=february";
     //Adresse parsen (umwandeln):
     let q: url.UrlWithParsedQuery = url.parse(adresse, true);
 
