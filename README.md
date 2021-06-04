@@ -16,3 +16,4 @@
 
 #  3 Server und Daten
 ## [3.1 Serveranbindung](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe3_1/)
+## [3.2 Server Request](https://immanuel-l.github.io/GIS_SoSe2021/Aufgaben/Aufgabe3_2/)
