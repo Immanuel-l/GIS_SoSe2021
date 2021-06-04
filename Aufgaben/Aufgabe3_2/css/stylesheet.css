@@ -43,7 +43,6 @@ body {
 }
 
 #loginForm input[type = "button"] {
-    display: block;
     background: none;
     margin: 20px auto;
     text-align: center;
@@ -58,4 +57,8 @@ body {
 
 #loginForm input[type = "button"]:hover {
     background: #3498db;
+}
+
+#responseText {
+    text-align: center;
 }
