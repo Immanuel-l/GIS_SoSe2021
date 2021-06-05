@@ -22,13 +22,13 @@ var Server;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname === "/html") {
+            if (url.pathname == "/html") {
                 for (let key in url.query) {
                     console.log(key + ":" + url.query[key]);
                     _response.write(key + ":" + url.query[key]);
                 }
             }
-            if (url.pathname === "/json") {
+            if (url.pathname == "/json") {
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
             }
