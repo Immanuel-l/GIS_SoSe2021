@@ -1,7 +1,7 @@
 "use strict";
 var Aufgabe3_2;
 (function (Aufgabe3_2) {
-    let url = "https://immanuelgis.herokuapp.com/";
+    let url = "https://immanuelgis.herokuapp.com";
     let responseText = document.getElementById("responseText");
     let buttonHtml = document.getElementById("buttonHtml");
     buttonHtml.addEventListener("click", dataTransferHtml);

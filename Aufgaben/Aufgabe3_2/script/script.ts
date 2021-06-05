@@ -1,10 +1,8 @@
 namespace Aufgabe3_2 {
-    let url: string = "https://immanuelgis.herokuapp.com/";
+    let url: string = "https://immanuelgis.herokuapp.com";
     let responseText: HTMLElement = document.getElementById("responseText");
-
     let buttonHtml: HTMLElement = document.getElementById("buttonHtml");
     buttonHtml.addEventListener("click", dataTransferHtml);
-
     let buttonJson: HTMLElement = document.getElementById("buttonJson");
     buttonJson.addEventListener("click", dataTransferJson);
 
