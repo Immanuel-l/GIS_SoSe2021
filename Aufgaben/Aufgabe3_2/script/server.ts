@@ -36,6 +36,8 @@ export namespace Server {
             }
         }
 
+        _response.write("hallo");
+
         _response.write(_request.url); //die Request url wird in den response geschrieben
         _response.end(); //die response wird beendet
     }
