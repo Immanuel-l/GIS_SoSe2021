@@ -59,6 +59,12 @@ body {
     background: #3498db;
 }
 
-#responseText {
+#responseDiv {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+    width: 200px;
     text-align: center;
+    
 }
