@@ -1,5 +1,4 @@
 namespace Aufgabe3_2 {
-    let url: string = "https://immanuelgis.herokuapp.com";
     let responseText: HTMLElement = document.getElementById("responseText");
     let buttonHtml: HTMLElement = document.getElementById("buttonHtml");
     buttonHtml.addEventListener("click", dataTransferHtml);
@@ -7,6 +6,7 @@ namespace Aufgabe3_2 {
     buttonJson.addEventListener("click", dataTransferJson);
 
     async function dataTransferHtml(): Promise<void> {
+        let url: string = "https://immanuelgis.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/html" + "?" + query.toString();
@@ -17,11 +17,12 @@ namespace Aufgabe3_2 {
     }
 
     async function dataTransferJson(): Promise<void> {
+        let url: string = "https://immanuelgis.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/json" + "?" + query.toString();
         let response: Response = await fetch(url);
-        let jsonText: string = await response.json();
+        let jsonText: string = await response.text();
         console.log(jsonText);
         
     }
