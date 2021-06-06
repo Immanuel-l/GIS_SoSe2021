@@ -24,7 +24,7 @@ var Server;
         if (url.pathname == "/html") {
             for (let key in url.query) {
                 console.log(key + ": " + url.query[key]);
-                _response.write(key + ": " + url.query[key] + "\n\n");
+                _response.write(key + ": " + url.query[key]);
             }
         }
         if (url.pathname == "/json") {
