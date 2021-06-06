@@ -25,8 +25,8 @@ export namespace Server {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         if (url.pathname == "/html") {
             for (let key in url.query) {
-                console.log(key + ": " + url.query[key] + "\r\n");
-                _response.write(key + ": " + url.query[key] + "\r\n");
+                console.log(key + ": " + url.query[key]);
+                _response.write(key + ": " + url.query[key] + "\n\n");
             }
         }
         if (url.pathname == "/json") {
