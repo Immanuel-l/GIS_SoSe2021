@@ -25,18 +25,14 @@ export namespace Server {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         if (url.pathname == "/html") {
             for (let key in url.query) {
-                console.log(key + ":" + url.query[key] + "\n");
-                _response.write(key + ":" + url.query[key] + "\n");
+                console.log(key + ":" + url.query[key]);
+                _response.write(key + ":" + url.query[key]);
             }
         }
         if (url.pathname == "/json") {
             let jsonString: string = JSON.stringify(url.query);
             _response.write(jsonString);
         }
-
-
-
-        _response.write(_request.url); //die Request url wird in den response geschrieben
         _response.end(); //die response wird beendet
     }
 }
