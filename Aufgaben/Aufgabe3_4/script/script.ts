@@ -22,15 +22,15 @@ namespace Aufgabe3_4 {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "?" + query.toString();
         let response: Response = await fetch(url);
-        let jsonText: Student = await response.json();
+        let jsonText: string = await response.json();
         console.log(jsonText); 
         // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
 
 
-    interface Student {
-        firstname: string;
-        name: string;
-        matrikelnummer: number;
-    }
+    // interface Student {
+    //     firstname: string;
+    //     name: string;
+    //     matrikelnummer: number;
+    // }
 }

@@ -26,5 +26,10 @@ var Aufgabe3_4;
         console.log(jsonText);
         // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
+    // interface Student {
+    //     firstname: string;
+    //     name: string;
+    //     matrikelnummer: number;
+    // }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=script.js.map
