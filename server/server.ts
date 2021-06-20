@@ -81,7 +81,6 @@ export namespace Server {
                 let search: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
                 students.deleteOne({"matrikelnummer": search.searchParams.get("matrikelnummer")});
                 console.log(search.searchParams.get("matrikelnummer"));
-                
             }
         }
         _response.end(); //die response wird beendet
