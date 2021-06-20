@@ -58,7 +58,7 @@ export namespace Server {
 
         if (_request.url) {
 
-            let q: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com//");
+            let search: URL = new URL("https://immanuelgis.herokuapp.com/");
 
             if (url.pathname == "/send") {
                 for (let key in url.query) {
@@ -80,8 +80,8 @@ export namespace Server {
                 _response.write(jsonData);
             }
             if (url.pathname == "/delete") {
-                students.deleteOne({"matrikelnummer": q.searchParams.get("matrikelnummer")});
-                console.log(q.searchParams.get("matrikelnummer"));
+                students.deleteOne({"matrikelnummer": search.searchParams.get("matrikelnummer")});
+                console.log(search.searchParams.get("matrikelnummer"));
                 
             }
         }
