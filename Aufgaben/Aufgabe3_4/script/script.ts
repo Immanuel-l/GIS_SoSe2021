@@ -16,9 +16,12 @@ namespace Aufgabe3_4 {
     async function dataRequest(): Promise<void> {
         let url: string = "https://immanuelgis.herokuapp.com/request";
         let response: Response = await fetch(url);
-        let text: Student = await response.json();
-        console.log(JSON.parse(text.firstname));
-        responseText.textContent = (JSON.stringify(text.firstname)); 
+        let text: string = await response.text();
+        let json: Student[] = JSON.parse(text);
+        console.log(json);
+        responseText.textContent = JSON.stringify(json);
+        // console.log(JSON.parse(text));
+        // responseText.textContent = (JSON.stringify(text)); 
     }
 
 
