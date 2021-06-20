@@ -8,21 +8,21 @@ body {
     color: white;
 }
 
-#loginForm {
+#studentForm {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     width: 300px;
     padding: 40px;
     text-align: center;
 }
 
-#loginForm input::placeholder {
+#studentForm input::placeholder {
     color: white;
 }
 
-#loginForm input[type = "text"], #loginForm input[type = "number"] {
+#studentForm input[type = "text"], #studentForm input[type = "number"] {
     display: block;
     border: 0;
     background: none;
@@ -37,12 +37,12 @@ body {
     transition: 0.25s;
 }
 
-#loginForm input[type = "text"]:focus, #loginForm input[type = "number"]:focus {
+#studentForm input[type = "text"]:focus, #studentForm input[type = "number"]:focus {
     width: 250px;
     border-color: #3498db;
 }
 
-#loginForm input[type = "button"] {
+#studentForm input[type = "button"] {
     background: none;
     margin: 20px auto;
     text-align: center;
@@ -55,12 +55,39 @@ body {
     cursor: pointer;
 }
 
-#loginForm input[type = "button"]:hover {
+#studentForm input[type = "button"]:hover {
     background: #3498db;
 }
 
+#responseContainer {
+    margin-top: 450px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .studentContainer {
+    background-color: #3498db;
     width: 100px;
-    height: 200px;
+    height: 140px;
     text-align: center;
+    border: 2px solid #21638f;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.studentDeleteButton {
+    background: #21638f;
+    border: 2px solid #21638f;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+    transition: 0.25s;
+}
+
+.studentDeleteButton:hover {
+    background: #2c3e50;
+    cursor: pointer;
 }

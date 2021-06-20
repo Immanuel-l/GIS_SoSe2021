@@ -20,22 +20,30 @@ var Aufgabe3_4;
         let text = await response.text();
         let json = JSON.parse(text);
         console.log(json[0]);
-        // responseText.textContent = JSON.stringify(json[0]); 
         for (let i = 0; i < json.length; i++) {
             let studentContainer = document.createElement("div");
             studentContainer.setAttribute("class", "studentContainer");
-            let studentFirstname = document.createElement("h2");
+            let studentFirstname = document.createElement("p");
             studentFirstname.setAttribute("class", "studentFirstname");
-            studentFirstname.textContent = JSON.stringify(json[i].firstname);
+            studentFirstname.textContent = json[i].firstname;
             studentContainer.appendChild(studentFirstname);
-            let studentName = document.createElement("h2");
+            let studentName = document.createElement("p");
             studentName.setAttribute("class", "studentName");
-            studentName.textContent = JSON.stringify(json[i].name);
+            studentName.textContent = json[i].name;
             studentContainer.appendChild(studentName);
-            let studentMatrikelnummer = document.createElement("h2");
+            let studentMatrikelnummer = document.createElement("p");
             studentMatrikelnummer.setAttribute("class", "studentMatrikelnummer");
-            studentMatrikelnummer.textContent = JSON.stringify(json[i].matrikelnummer);
+            studentMatrikelnummer.textContent = json[i].matrikelnummer;
             studentContainer.appendChild(studentMatrikelnummer);
+            let studentDeleteButton = document.createElement("button");
+            studentDeleteButton.setAttribute("class", "studentDeleteButton");
+            studentDeleteButton.addEventListener("click", deleteStudentFunction);
+            studentDeleteButton.textContent = "delete";
+            studentContainer.appendChild(studentDeleteButton);
+            async function deleteStudentFunction() {
+                let url = "https://immanuelgis.herokuapp.com/delete?_matrikelnummer=" + json[i].matrikelnummer;
+                await fetch(url);
+            }
             responseContainer.appendChild(studentContainer);
         }
     }

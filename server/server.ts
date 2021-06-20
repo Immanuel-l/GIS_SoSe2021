@@ -54,9 +54,11 @@ export namespace Server {
         console.log("I hear voices!"); //Auf der Konsole wird I hear voices ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Textsprache wird auf UFT-8 gesetzt
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
-
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+
         if (_request.url) {
+
+            let q: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com//");
 
             if (url.pathname == "/send") {
                 for (let key in url.query) {
@@ -78,7 +80,7 @@ export namespace Server {
                 _response.write(jsonData);
             }
             if (url.pathname == "/delete") {
-                students.deleteOne({"matrikelnummer": 592403});
+                students.deleteOne({"matrikelnummer": q.searchParams.get("matrikelnummer")});
             }
         }
         _response.end(); //die response wird beendet

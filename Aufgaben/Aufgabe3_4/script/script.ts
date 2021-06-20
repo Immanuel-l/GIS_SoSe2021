@@ -21,26 +21,36 @@ namespace Aufgabe3_4 {
         let text: string = await response.text();
         let json: Student[] = JSON.parse(text);
         console.log(json[0]);
-        // responseText.textContent = JSON.stringify(json[0]); 
 
         for (let i: number = 0; i < json.length; i++) {
             let studentContainer: HTMLDivElement = document.createElement("div");
             studentContainer.setAttribute("class", "studentContainer");
 
-            let studentFirstname: HTMLHeadingElement = document.createElement("h2");
+            let studentFirstname: HTMLParagraphElement = document.createElement("p");
             studentFirstname.setAttribute("class", "studentFirstname");
-            studentFirstname.textContent = JSON.stringify(json[i].firstname);
+            studentFirstname.textContent = json[i].firstname;
             studentContainer.appendChild(studentFirstname);
 
-            let studentName: HTMLHeadingElement = document.createElement("h2");
+            let studentName: HTMLParagraphElement = document.createElement("p");
             studentName.setAttribute("class", "studentName");
-            studentName.textContent = JSON.stringify(json[i].name);
+            studentName.textContent = json[i].name;
             studentContainer.appendChild(studentName);
 
-            let studentMatrikelnummer: HTMLHeadingElement = document.createElement("h2");
+            let studentMatrikelnummer: HTMLParagraphElement = document.createElement("p");
             studentMatrikelnummer.setAttribute("class", "studentMatrikelnummer");
-            studentMatrikelnummer.textContent = JSON.stringify(json[i].matrikelnummer);
+            studentMatrikelnummer.textContent = json[i].matrikelnummer;
             studentContainer.appendChild(studentMatrikelnummer);
+
+            let studentDeleteButton: HTMLButtonElement = document.createElement("button");
+            studentDeleteButton.setAttribute("class", "studentDeleteButton");
+            studentDeleteButton.addEventListener("click", deleteStudentFunction);
+            studentDeleteButton.textContent = "delete";
+            studentContainer.appendChild(studentDeleteButton);
+
+            async function deleteStudentFunction(): Promise<void> {
+                let url: string = "https://immanuelgis.herokuapp.com/delete?_matrikelnummer=" + json[i].matrikelnummer;
+                await fetch(url);
+            }
 
             responseContainer.appendChild(studentContainer);
         }
@@ -49,6 +59,6 @@ namespace Aufgabe3_4 {
     interface Student {
         firstname: string;
         name: string;
-        matrikelnummer: number;
+        matrikelnummer: string;
     }
 }
