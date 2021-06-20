@@ -57,15 +57,20 @@ export namespace Server {
 
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         if (_request.url) {
-            for (let key in url.query) {
-                console.log(key + ": " + url.query[key]);
-                _response.write(key + ": " + url.query[key] + " ");
+            if (url.pathname == "/send") {
+                for (let key in url.query) {
+                    console.log(key + ": " + url.query[key]);
+                    _response.write(key + ": " + url.query[key] + " ");
+                }
+
+                let jsonString: string = JSON.stringify(url.query);
+                _response.write(jsonString);
+
+                storeStudent(url.query);
             }
-
-            let jsonString: string = JSON.stringify(url.query);
-            _response.write(jsonString);
-
-            storeStudent(url.query);
+            if (url.pathname == "/request") {
+                requestStudents();
+            }
         }
         _response.end(); //die response wird beendet
     }
@@ -73,5 +78,9 @@ export namespace Server {
 
     function storeStudent(_student: Student): void {
         students.insertOne(_student);
+    }
+
+    function requestStudents(): void {
+        students.find();
     }
 }

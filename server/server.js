@@ -45,18 +45,26 @@ var Server;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
         let url = Url.parse(_request.url, true);
         if (_request.url) {
-            for (let key in url.query) {
-                console.log(key + ": " + url.query[key]);
-                _response.write(key + ": " + url.query[key] + " ");
+            if (url.pathname == "/send") {
+                for (let key in url.query) {
+                    console.log(key + ": " + url.query[key]);
+                    _response.write(key + ": " + url.query[key] + " ");
+                }
+                let jsonString = JSON.stringify(url.query);
+                _response.write(jsonString);
+                storeStudent(url.query);
             }
-            let jsonString = JSON.stringify(url.query);
-            _response.write(jsonString);
-            storeStudent(url.query);
+            if (url.pathname == "/request") {
+                requestStudents();
+            }
         }
         _response.end(); //die response wird beendet
     }
     function storeStudent(_student) {
         students.insertOne(_student);
+    }
+    function requestStudents() {
+        students.find();
     }
 })(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map
