@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Server;
 (function (Server) {
-    let orders;
+    let students;
     console.log("Starting server"); //Auf der Konsole wird Starting server ausgegeben
     let port = Number(process.env.PORT); //es wird der port festgelegt
     if (!port)
@@ -25,8 +25,8 @@ var Server;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        orders = mongoClient.db("Test").collection("Students");
-        console.log("Database connection ", orders != undefined);
+        students = mongoClient.db("Test").collection("Students");
+        console.log("Database connection ", students != undefined);
     }
     // async function connectToDB(): Promise<void> {
     //     const MongoClient = require("mongodb").MongoClient;
@@ -51,12 +51,12 @@ var Server;
             }
             let jsonString = JSON.stringify(url.query);
             _response.write(jsonString);
-            storeOrder(url.query);
+            storeStudent(url.query);
         }
         _response.end(); //die response wird beendet
     }
-    function storeOrder(_order) {
-        orders.insert(_order);
+    function storeStudent(_student) {
+        students.insertOne(_student);
     }
 })(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map

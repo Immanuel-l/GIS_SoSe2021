@@ -3,9 +3,9 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace Server {
-    let orders: Mongo.Collection;
+    let students: Mongo.Collection;
 
-    interface Order {
+    interface Student {
         [type: string]: string | string[];
     }
 
@@ -33,8 +33,8 @@ export namespace Server {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        orders = mongoClient.db("Test").collection("Students");
-        console.log("Database connection ", orders != undefined);
+        students = mongoClient.db("Test").collection("Students");
+        console.log("Database connection ", students != undefined);
     }
 
     // async function connectToDB(): Promise<void> {
@@ -65,13 +65,13 @@ export namespace Server {
             let jsonString: string = JSON.stringify(url.query);
             _response.write(jsonString);
 
-            storeOrder(url.query);
+            storeStudent(url.query);
         }
         _response.end(); //die response wird beendet
     }
 
 
-    function storeOrder(_order: Order): void {
-        orders.insert(_order);
+    function storeStudent(_student: Student): void {
+        students.insertOne(_student);
     }
 }
