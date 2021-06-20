@@ -58,7 +58,6 @@ var Server;
                 let cursor = students.find();
                 let result = await cursor.toArray();
                 console.log(result);
-                _response.write(result);
             }
         }
         _response.end(); //die response wird beendet

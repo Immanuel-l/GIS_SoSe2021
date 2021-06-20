@@ -71,8 +71,7 @@ export namespace Server {
             if (url.pathname == "/request") {
                 let cursor: Mongo.Cursor = students.find();
                 let result: string[] = await cursor.toArray(); 
-                console.log(result);
-                _response.write(result);      
+                console.log(result);    
             }
         }
         _response.end(); //die response wird beendet
