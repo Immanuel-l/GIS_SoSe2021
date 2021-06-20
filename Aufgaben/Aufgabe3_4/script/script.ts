@@ -18,7 +18,7 @@ namespace Aufgabe3_4 {
         let response: Response = await fetch(url);
         let text: Student = await response.json();
         responseText.textContent = text.firstname;
-        // console.log(jsonText); 
+        console.log(text); 
         // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
 

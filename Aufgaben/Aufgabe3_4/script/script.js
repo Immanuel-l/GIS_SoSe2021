@@ -18,7 +18,7 @@ var Aufgabe3_4;
         let response = await fetch(url);
         let text = await response.json();
         responseText.textContent = text.firstname;
-        // console.log(jsonText); 
+        console.log(text);
         // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
