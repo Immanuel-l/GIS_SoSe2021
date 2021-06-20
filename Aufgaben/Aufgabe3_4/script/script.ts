@@ -50,6 +50,7 @@ namespace Aufgabe3_4 {
             async function deleteStudentFunction(): Promise<void> {
                 let url: string = "https://immanuelgis.herokuapp.com/delete?matrikelnummer=" + json[i].matrikelnummer;
                 await fetch(url);
+                dataRequest();
             }
 
             responseContainer.appendChild(studentContainer);
