@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 const Http = require("http");
 const Url = require("url");
+const Mongo = require("mongodb");
 var Server;
 (function (Server) {
     let orders;
@@ -11,8 +12,8 @@ var Server;
     if (!port)
         port = 8100; //wenn es keinen port gibt wird der port auf 8100 gestellt
     //connectToDB("mongodb://localhost:27017");
-    //connectToDB("mongodb+srv://Immanuel:ORmcWgGE1t3y@immanuel-gis-cluster.evslb.mongodb.net/Test?retryWrites=true&w=majority");
-    connectToDB();
+    connectToDB("mongodb+srv://Immanuel:ORmcWgGE1t3y@immanuel-gis-cluster.evslb.mongodb.net/Test?retryWrites=true&w=majority");
+    // connectToDB();
     let server = Http.createServer(); //es wird ein http server erstellt
     server.addListener("request", handleRequest); //dem server wird ein Listener hinzugefügt der die Anfragen vom Benutzer verarbeitet und eine Antwort zurück an den Benutzer schickt
     server.addListener("listening", handleListen); //dem server wird ein Listener hinzugefügt der abfragt ob der Server grade zuhört
@@ -20,23 +21,24 @@ var Server;
     function handleListen() {
         console.log("Listening"); //in der handleListen funktion wird Listening ausgegeben
     }
-    // async function connectToDB(_url: string): Promise<void> {
-    //     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true};
-    //     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-    //     await mongoClient.connect();
-    //     orders = mongoClient.db("Test").collection("Students");
+    async function connectToDB(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        orders = mongoClient.db("Test").collection("Students");
+        console.log("Database connection ", orders != undefined);
+    }
+    // async function connectToDB(): Promise<void> {
+    //     const MongoClient = require("mongodb").MongoClient;
+    //     const uri = "mongodb+srv://Immanuel:ORmcWgGE1t3y@immanuel-gis-cluster.evslb.mongodb.net/Test?retryWrites=true&w=majority";
+    //     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    //     client.connect(err => {
+    //     orders = client.db("Test").collection("Students");
+    //     // perform actions on the collection object
+    //     client.close();
+    //     });
     //     console.log("Database connection ", orders != undefined);
     // }
-    async function connectToDB() {
-        const MongoClient = require("mongodb").MongoClient;
-        const uri = "mongodb+srv://Immanuel:ORmcWgGE1t3y@immanuel-gis-cluster.evslb.mongodb.net/Test?retryWrites=true&w=majority";
-        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        client.connect(err => {
-            orders = client.db("Test").collection("Students");
-            // perform actions on the collection object
-            client.close();
-        });
-    }
     function handleRequest(_request, _response) {
         console.log("I hear voices!"); //Auf der Konsole wird I hear voices ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Textsprache wird auf UFT-8 gesetzt
