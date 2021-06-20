@@ -55,19 +55,18 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                _response.write(requestStudent());
+                async function requestStudent() {
+                    let cursor = students.find();
+                    let result = await cursor.toArray();
+                    _response.write(result);
+                }
+                requestStudent();
             }
         }
         _response.end(); //die response wird beendet
     }
     function storeStudent(_student) {
         students.insertOne(_student);
-    }
-    async function requestStudent() {
-        let cursor = students.find();
-        let result = await cursor.toArray();
-        console.log(result);
-        return result;
     }
 })(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map

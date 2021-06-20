@@ -69,7 +69,12 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                _response.write(requestStudent());
+                async function requestStudent(): Promise<void> {
+                    let cursor: Mongo.Cursor = students.find();
+                    let result: string[] = await cursor.toArray(); 
+                    _response.write(result);   
+                }
+                requestStudent();
 
                 
             }
@@ -80,13 +85,5 @@ export namespace Server {
 
     function storeStudent(_student: Student): void {
         students.insertOne(_student);
-    }
-
-    async function requestStudent(): Promise<string[]> {
-        let cursor: Mongo.Cursor = students.find();
-        let result: string[] = await cursor.toArray();
-        console.log(result);
-        
-        return result;
     }
 }
