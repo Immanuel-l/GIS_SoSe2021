@@ -55,9 +55,12 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                let cursor = students.find();
-                let result = await cursor.toArray();
-                console.log(result);
+                // let cursor: Mongo.Cursor = students.find();
+                // let result: string[] = await cursor.toArray(); 
+                // console.log(result);    
+                let data = await students.find().toArray();
+                let jsonData = JSON.stringify(data);
+                _response.write(jsonData);
             }
         }
         _response.end(); //die response wird beendet

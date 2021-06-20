@@ -17,9 +17,7 @@ var Aufgabe3_4;
         let url = "https://immanuelgis.herokuapp.com/request";
         let response = await fetch(url);
         let text = await response.text();
-        responseText.textContent = text;
-        console.log(text);
-        // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
+        console.log(JSON.parse(text));
     }
     // interface Student {
     //     firstname: string;

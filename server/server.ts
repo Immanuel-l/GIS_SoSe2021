@@ -69,9 +69,12 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                let cursor: Mongo.Cursor = students.find();
-                let result: string[] = await cursor.toArray(); 
-                console.log(result);    
+                // let cursor: Mongo.Cursor = students.find();
+                // let result: string[] = await cursor.toArray(); 
+                // console.log(result);    
+                let data: string[] = await students.find().toArray();
+                let jsonData: string = JSON.stringify(data);
+                _response.write(jsonData);
             }
         }
         _response.end(); //die response wird beendet
