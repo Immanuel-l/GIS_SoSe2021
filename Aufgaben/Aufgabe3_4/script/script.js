@@ -43,7 +43,6 @@ var Aufgabe3_4;
             async function deleteStudentFunction() {
                 let url = "https://immanuelgis.herokuapp.com/delete?matrikelnummer=" + json[i].matrikelnummer;
                 await fetch(url);
-                dataRequest();
             }
             responseContainer.appendChild(studentContainer);
         }
