@@ -21,9 +21,9 @@ var Aufgabe3_4;
         let json = JSON.parse(text);
         console.log(json[0]);
         // responseText.textContent = JSON.stringify(json[0]); 
-        for (let i = 0; i < json.length; i++) {
+        for (let i = 0; i < 5; i++) {
             let studentContainer = document.createElement("div");
-            studentContainer.appendChild(responseContainer);
+            responseContainer.appendChild(studentContainer);
         }
     }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
