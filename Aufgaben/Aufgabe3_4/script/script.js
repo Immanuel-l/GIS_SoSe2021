@@ -1,6 +1,7 @@
 "use strict";
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
+    let responseText = document.getElementById("responseText");
     let buttonSend = document.getElementById("buttonSend");
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest = document.getElementById("buttonRequest");
@@ -17,6 +18,7 @@ var Aufgabe3_4;
         let response = await fetch(url);
         let text = await response.text();
         console.log(JSON.parse(text));
+        responseText.textContent = (JSON.parse(text));
     }
     // interface Student {
     //     firstname: string;
