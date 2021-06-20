@@ -39,7 +39,7 @@ var Server;
     //     });
     //     console.log("Database connection ", orders != undefined);
     // }
-    function handleRequest(_request, _response) {
+    async function handleRequest(_request, _response) {
         console.log("I hear voices!"); //Auf der Konsole wird I hear voices ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Textsprache wird auf UFT-8 gesetzt
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
@@ -55,7 +55,9 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                _response.write(JSON.stringify(students.find().toArray()));
+                let cursor = students.find();
+                let result = await cursor.toArray();
+                console.log(result);
             }
         }
         _response.end(); //die response wird beendet

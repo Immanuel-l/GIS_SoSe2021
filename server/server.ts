@@ -50,7 +50,7 @@ export namespace Server {
     // }
 
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!"); //Auf der Konsole wird I hear voices ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Textsprache wird auf UFT-8 gesetzt
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
@@ -69,9 +69,9 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                _response.write(JSON.stringify(students.find().toArray()));
-
-                
+                let cursor: Mongo.Cursor = students.find();
+                let result: string[] = await cursor.toArray(); 
+                console.log(result);         
             }
         }
         _response.end(); //die response wird beendet
