@@ -1,7 +1,7 @@
 "use strict";
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
-    let responseText = document.getElementById("responseText");
+    // let responseText: HTMLElement = document.getElementById("responseText");
     let buttonSend = document.getElementById("buttonSend");
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest = document.getElementById("buttonRequest");
@@ -20,7 +20,7 @@ var Aufgabe3_4;
         let text = await response.text();
         let json = JSON.parse(text);
         console.log(json[0]);
-        responseText.textContent = JSON.stringify(json[0]);
+        // responseText.textContent = JSON.stringify(json[0]); 
         for (let i = 0; i < json.length; i++) {
             let studentContainer = document.createElement("div");
             studentContainer.appendChild(responseContainer);
