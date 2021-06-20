@@ -17,7 +17,7 @@ var Aufgabe3_4;
         let url = "https://immanuelgis.herokuapp.com/request";
         let response = await fetch(url);
         let text = await response.json();
-        console.log(JSON.parse(text.firstname));
+        console.log(text.firstname);
     }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=script.js.map
