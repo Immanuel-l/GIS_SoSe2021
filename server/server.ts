@@ -81,6 +81,8 @@ export namespace Server {
             }
             if (url.pathname == "/delete") {
                 students.deleteOne({"matrikelnummer": q.searchParams.get("matrikelnummer")});
+                console.log(q.searchParams.get("matrikelnummer"));
+                
             }
         }
         _response.end(); //die response wird beendet
