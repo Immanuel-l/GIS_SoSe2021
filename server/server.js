@@ -57,6 +57,7 @@ var Server;
             if (url.pathname == "/request") {
                 let jsonString = JSON.stringify(requestStudent());
                 _response.write(jsonString);
+                console.log(jsonString);
             }
         }
         _response.end(); //die response wird beendet

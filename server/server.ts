@@ -71,6 +71,8 @@ export namespace Server {
             if (url.pathname == "/request") {
                 let jsonString: string = JSON.stringify(requestStudent());
                 _response.write(jsonString);
+                console.log(jsonString);
+                
             }
         }
         _response.end(); //die response wird beendet
