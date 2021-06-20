@@ -69,12 +69,7 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                async function requestStudent(): Promise<void> {
-                    let cursor: Mongo.Cursor = students.find();
-                    let result: string[] = await cursor.toArray(); 
-                    _response.write(result);   
-                }
-                requestStudent();
+                _response.write(JSON.stringify(students.find().toArray()));
 
                 
             }

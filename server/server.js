@@ -55,12 +55,7 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                async function requestStudent() {
-                    let cursor = students.find();
-                    let result = await cursor.toArray();
-                    _response.write(result);
-                }
-                requestStudent();
+                _response.write(JSON.stringify(students.find().toArray()));
             }
         }
         _response.end(); //die response wird beendet
