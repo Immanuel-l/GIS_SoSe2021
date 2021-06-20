@@ -69,7 +69,9 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                requestStudents();
+                
+                let jsonString: string = JSON.stringify(students.find());
+                _response.write(jsonString);
             }
         }
         _response.end(); //die response wird beendet
@@ -78,9 +80,5 @@ export namespace Server {
 
     function storeStudent(_student: Student): void {
         students.insertOne(_student);
-    }
-
-    function requestStudents(): void {
-        students.find();
     }
 }

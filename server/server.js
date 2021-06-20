@@ -55,16 +55,14 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                requestStudents();
+                let jsonString = JSON.stringify(students.find());
+                _response.write(jsonString);
             }
         }
         _response.end(); //die response wird beendet
     }
     function storeStudent(_student) {
         students.insertOne(_student);
-    }
-    function requestStudents() {
-        students.find();
     }
 })(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map
