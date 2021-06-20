@@ -55,9 +55,7 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                let jsonString = JSON.stringify(requestStudent());
-                _response.write(jsonString);
-                console.log(jsonString);
+                _response.write(requestStudent());
             }
         }
         _response.end(); //die response wird beendet
