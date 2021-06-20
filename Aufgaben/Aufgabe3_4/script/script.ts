@@ -1,5 +1,5 @@
 namespace Aufgabe3_4 {
-    let responseText: HTMLElement = document.getElementById("responseText");
+    // let responseText: HTMLElement = document.getElementById("responseText");
     let buttonSend: HTMLElement = document.getElementById("buttonSend");
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest: HTMLElement = document.getElementById("buttonRequest");
@@ -24,7 +24,7 @@ namespace Aufgabe3_4 {
         let response: Response = await fetch(url);
         let jsonText: Student = await response.json();
         console.log(jsonText); 
-        responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
+        // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
 
 

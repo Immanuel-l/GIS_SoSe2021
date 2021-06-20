@@ -1,7 +1,7 @@
 "use strict";
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
-    let responseText = document.getElementById("responseText");
+    // let responseText: HTMLElement = document.getElementById("responseText");
     let buttonSend = document.getElementById("buttonSend");
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest = document.getElementById("buttonRequest");
@@ -24,7 +24,7 @@ var Aufgabe3_4;
         let response = await fetch(url);
         let jsonText = await response.json();
         console.log(jsonText);
-        responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
+        // responseText.textContent = jsonText.firstname + " " + jsonText.name + " " + jsonText.matrikelnummer;
     }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=script.js.map
