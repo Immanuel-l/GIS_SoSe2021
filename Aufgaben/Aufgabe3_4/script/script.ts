@@ -1,5 +1,5 @@
 namespace Aufgabe3_4 {
-    let responseText: HTMLElement = document.getElementById("responseText");
+    //let responseText: HTMLElement = document.getElementById("responseText");
     let buttonSend: HTMLElement = document.getElementById("buttonSend");
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest: HTMLElement = document.getElementById("buttonRequest");
@@ -16,15 +16,14 @@ namespace Aufgabe3_4 {
     async function dataRequest(): Promise<void> {
         let url: string = "https://immanuelgis.herokuapp.com/request";
         let response: Response = await fetch(url);
-        let text: string = await response.text();
-        console.log(JSON.parse(text));
-        responseText.textContent = text; 
+        let text: Student = await response.json();
+        console.log(JSON.parse(text.firstname));
     }
 
 
-    // interface Student {
-    //     firstname: string;
-    //     name: string;
-    //     matrikelnummer: number;
-    // }
+    interface Student {
+        firstname: string;
+        name: string;
+        matrikelnummer: number;
+    }
 }
