@@ -69,8 +69,7 @@ export namespace Server {
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                
-                let jsonString: string = JSON.stringify(students.find().toArray());
+                let jsonString: string = JSON.stringify(requestStudent());
                 _response.write(jsonString);
             }
         }
@@ -80,5 +79,11 @@ export namespace Server {
 
     function storeStudent(_student: Student): void {
         students.insertOne(_student);
+    }
+
+    async function requestStudent(): Promise<string[]> {
+        let cursor: Mongo.Cursor = students.find();
+        let result: string[] = await cursor.toArray();
+        return result;
     }
 }

@@ -55,7 +55,7 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                let jsonString = JSON.stringify(students.find().toArray());
+                let jsonString = JSON.stringify(requestStudent());
                 _response.write(jsonString);
             }
         }
@@ -63,6 +63,11 @@ var Server;
     }
     function storeStudent(_student) {
         students.insertOne(_student);
+    }
+    async function requestStudent() {
+        let cursor = students.find();
+        let result = await cursor.toArray();
+        return result;
     }
 })(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map
