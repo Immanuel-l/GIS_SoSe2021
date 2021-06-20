@@ -16,14 +16,9 @@ var Aufgabe3_4;
     async function dataRequest() {
         let url = "https://immanuelgis.herokuapp.com/request";
         let response = await fetch(url);
-        let text = await response.text();
-        console.log(JSON.parse(text));
-        responseText.textContent = (JSON.stringify(text));
+        let text = await response.json();
+        console.log(JSON.parse(text.firstname));
+        responseText.textContent = (JSON.stringify(text.firstname));
     }
-    // interface Student {
-    //     firstname: string;
-    //     name: string;
-    //     matrikelnummer: number;
-    // }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=script.js.map
