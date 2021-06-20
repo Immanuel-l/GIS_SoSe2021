@@ -58,8 +58,6 @@ export namespace Server {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         if (_request.url) {
 
-            let q: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
-
             if (url.pathname == "/send") {
                 for (let key in url.query) {
                     console.log(key + ": " + url.query[key]);
@@ -80,7 +78,7 @@ export namespace Server {
                 _response.write(jsonData);
             }
             if (url.pathname == "/delete") {
-                students.deleteOne({_search: new Mongo.ObjectId(q.searchParams.get("matrikelnummer"))});
+                students.deleteOne({"matrikelnummer": 592403});
             }
         }
         _response.end(); //die response wird beendet
