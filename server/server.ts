@@ -70,7 +70,7 @@ export namespace Server {
             }
             if (url.pathname == "/request") {
                 
-                let jsonString: string = JSON.stringify(students.find());
+                let jsonString: string = JSON.stringify(students.find().toArray());
                 _response.write(jsonString);
             }
         }

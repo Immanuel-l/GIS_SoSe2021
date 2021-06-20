@@ -55,7 +55,7 @@ var Server;
                 storeStudent(url.query);
             }
             if (url.pathname == "/request") {
-                let jsonString = JSON.stringify(students.find());
+                let jsonString = JSON.stringify(students.find().toArray());
                 _response.write(jsonString);
             }
         }
