@@ -29,14 +29,17 @@ namespace Aufgabe3_4 {
 
             let studentFirstname: HTMLHeadingElement = document.createElement("h2");
             studentFirstname.setAttribute("class", "studentFirstname");
+            studentFirstname.textContent = JSON.stringify(json[i].firstname);
             studentContainer.appendChild(studentFirstname);
 
             let studentName: HTMLHeadingElement = document.createElement("h2");
             studentName.setAttribute("class", "studentName");
+            studentName.textContent = JSON.stringify(json[i].name);
             studentContainer.appendChild(studentName);
 
             let studentMatrikelnummer: HTMLHeadingElement = document.createElement("h2");
             studentMatrikelnummer.setAttribute("class", "studentMatrikelnummer");
+            studentMatrikelnummer.textContent = JSON.stringify(json[i].matrikelnummer);
             studentContainer.appendChild(studentMatrikelnummer);
 
             responseContainer.appendChild(studentContainer);

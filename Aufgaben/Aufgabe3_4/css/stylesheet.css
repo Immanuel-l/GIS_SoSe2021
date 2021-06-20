@@ -59,11 +59,8 @@ body {
     background: #3498db;
 }
 
-#responseDiv {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%,-80%);
+.studentContainer {
+    width: 100px;
+    height: 200px;
     text-align: center;
-    
 }
