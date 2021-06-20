@@ -5,6 +5,8 @@ namespace Aufgabe3_4 {
     let buttonRequest: HTMLElement = document.getElementById("buttonRequest");
     buttonRequest.addEventListener("click", dataRequest);
 
+    let responseContainer: HTMLDivElement = <HTMLDivElement> document.getElementById("responseContainer");
+
     async function dataSend(): Promise<void> {
         let url: string = "https://immanuelgis.herokuapp.com/send";
         let formData: FormData = new FormData(document.forms[0]);
@@ -19,11 +21,13 @@ namespace Aufgabe3_4 {
         let text: string = await response.text();
         let json: Student[] = JSON.parse(text);
         console.log(json[0]);
-        responseText.textContent = JSON.stringify(json[0]);
-        // console.log(JSON.parse(text));
-        // responseText.textContent = (JSON.stringify(text)); 
-    }
+        responseText.textContent = JSON.stringify(json[0]); 
 
+        for (let i: number = 0; i < json.length; i++) {
+            let studentContainer: HTMLDivElement = document.createElement("div");
+            studentContainer.appendChild(responseContainer);
+        }
+    }
 
     interface Student {
         firstname: string;

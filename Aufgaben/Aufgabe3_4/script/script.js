@@ -6,6 +6,7 @@ var Aufgabe3_4;
     buttonSend.addEventListener("click", dataSend);
     let buttonRequest = document.getElementById("buttonRequest");
     buttonRequest.addEventListener("click", dataRequest);
+    let responseContainer = document.getElementById("responseContainer");
     async function dataSend() {
         let url = "https://immanuelgis.herokuapp.com/send";
         let formData = new FormData(document.forms[0]);
@@ -20,8 +21,10 @@ var Aufgabe3_4;
         let json = JSON.parse(text);
         console.log(json[0]);
         responseText.textContent = JSON.stringify(json[0]);
-        // console.log(JSON.parse(text));
-        // responseText.textContent = (JSON.stringify(text)); 
+        for (let i = 0; i < json.length; i++) {
+            let studentContainer = document.createElement("div");
+            studentContainer.appendChild(responseContainer);
+        }
     }
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=script.js.map
