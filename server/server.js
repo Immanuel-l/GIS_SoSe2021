@@ -45,6 +45,7 @@ var Server;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //im header wird der Access-Control-Allow-Origin damit jede seite an diese Seite etwas Senden kann
         let url = Url.parse(_request.url, true);
         if (_request.url) {
+            let q = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
             if (url.pathname == "/send") {
                 for (let key in url.query) {
                     console.log(key + ": " + url.query[key]);
@@ -61,6 +62,9 @@ var Server;
                 let data = await students.find().toArray();
                 let jsonData = JSON.stringify(data);
                 _response.write(jsonData);
+            }
+            if (url.pathname == "/delete") {
+                students.deleteOne({ _search: new Mongo.ObjectId(q.searchParams.get("matrikelnummer")) });
             }
         }
         _response.end(); //die response wird beendet
