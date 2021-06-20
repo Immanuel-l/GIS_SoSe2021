@@ -41,7 +41,7 @@ export namespace Server {
         const MongoClient = require("mongodb").MongoClient;
         const uri = "mongodb+srv://Immanuel:ORmcWgGE1t3y@immanuel-gis-cluster.evslb.mongodb.net/Test?retryWrites=true&w=majority";
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect(err => {
+        client.connect(err => {
         orders = client.db("Test").collection("Students");
         // perform actions on the collection object
         client.close();
