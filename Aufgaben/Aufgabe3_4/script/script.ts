@@ -18,8 +18,8 @@ namespace Aufgabe3_4 {
         let response: Response = await fetch(url);
         let text: string = await response.text();
         let json: Student[] = JSON.parse(text);
-        console.log(json);
-        responseText.textContent = JSON.stringify(json);
+        console.log(json[0]);
+        responseText.textContent = JSON.stringify(json[0]);
         // console.log(JSON.parse(text));
         // responseText.textContent = (JSON.stringify(text)); 
     }
