@@ -18,7 +18,7 @@ var Aufgabe3_4;
         let response = await fetch(url);
         let text = await response.text();
         console.log(JSON.parse(text));
-        responseText.textContent = (JSON.parse(text));
+        responseText.textContent = (JSON.stringify(text));
     }
     // interface Student {
     //     firstname: string;
