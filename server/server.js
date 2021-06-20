@@ -68,6 +68,7 @@ var Server;
     async function requestStudent() {
         let cursor = students.find();
         let result = await cursor.toArray();
+        console.log(result);
         return result;
     }
 })(Server = exports.Server || (exports.Server = {}));

@@ -86,6 +86,8 @@ export namespace Server {
     async function requestStudent(): Promise<string[]> {
         let cursor: Mongo.Cursor = students.find();
         let result: string[] = await cursor.toArray();
+        console.log(result);
+        
         return result;
     }
 }
