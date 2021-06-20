@@ -16,7 +16,7 @@ namespace Aufgabe3_4 {
         let url: string = "https://immanuelgis.herokuapp.com/request";
         let response: Response = await fetch(url);
         let text: string = await response.text();
-        console.log(JSON.parse(text[1]));
+        console.log(JSON.parse(text));
     }
 
 

@@ -16,7 +16,7 @@ var Aufgabe3_4;
         let url = "https://immanuelgis.herokuapp.com/request";
         let response = await fetch(url);
         let text = await response.text();
-        console.log(JSON.parse(text[1]));
+        console.log(JSON.parse(text));
     }
     // interface Student {
     //     firstname: string;
