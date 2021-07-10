@@ -1,0 +1,225 @@
+* {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    background: #113859;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 200px;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    padding-top: 220px;
+}
+
+h3 {
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+p {
+    font-size: 30px;
+}
+
+.active {
+    color: steelblue;
+}
+
+.signup-links {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/******************NAVS**********************/
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 30px;
+}
+
+
+#start-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#start-nav ul li {
+    padding: 80px;
+}
+
+
+#play-nav {
+    position: absolute;
+    top: 80px;
+    left: 150px;
+}
+
+#play-nav ul {
+    flex-direction: column;
+    align-items: center;
+}
+
+#play-nav ul li {
+    padding: 10px;
+}
+
+
+#main-nav {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 800px;
+}
+
+#main-nav ul li {
+    padding: 80px;
+}
+
+/*************FORMS*****************/
+
+.main-form {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-form input, #admin-form input {
+    margin: 25px auto;
+    padding: 18px 20px;
+    background: none;
+    width: 250px;
+    border: solid 2px #085E97;
+    border-radius: 40px;
+    color: white;
+    outline: none;
+    font-size: 16px;
+}
+
+.main-form input::placeholder, #admin-form input::placeholder {
+    color: white;
+}
+
+
+#admin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/***************PLAY***********/
+
+#timer {
+    position: absolute;
+    top: 380px;
+    left: 170px;
+    text-align: center;
+}
+
+#pairs {
+    position: absolute;
+    top: 700px;
+    left: 170px;
+    text-align: center;
+}
+
+#cards {
+    position: absolute;
+    top: 70px;
+    right: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 988px;
+    height: 819px;
+}
+
+.card {
+    width: 144px;
+    height: 144px;
+    background-image: url(../img/back_of_card.png);
+    background-position: center;
+    background-size: 100%;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.card p {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
+
+
+/************USERSCORE**************/
+
+#userscore {
+    display: none;
+}
+
+/*************HIGHSCORES************/
+
+#highscore-titles {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: space-around;
+    width: 1000px;
+    padding: 40px;
+}
+
+
+/************ADMIN*****************/
+
+#admin-titles {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px
+}
+
+
+
+
+
+
+
+

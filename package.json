@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node Pruefungsabgabe/script/server.js"
   },
   "repository": {
     "type": "git",
