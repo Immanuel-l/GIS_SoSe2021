@@ -11,6 +11,7 @@ var Pruefungsaufgabe;
             let response = await fetch(url);
             let text = await response.text();
             urlArray = JSON.parse(text);
+            console.log(text);
         }
         let status = "Started";
         let interval;

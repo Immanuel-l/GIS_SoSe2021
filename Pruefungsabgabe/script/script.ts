@@ -10,6 +10,8 @@ namespace Pruefungsaufgabe {
             let response: Response = await fetch(url);
             let text: string = await response.text();
             urlArray = JSON.parse(text);
+            console.log(text);
+            
         }
 
         let status: string = "Started";
