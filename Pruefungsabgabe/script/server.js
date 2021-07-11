@@ -61,6 +61,9 @@ var Pruefungsaufgabe;
                 let jsonData = JSON.stringify(data);
                 _response.write(jsonData);
             }
+            if (url.pathname == "/adduserscore") {
+                highscores.insertOne({ "username": url.query.username, "userscore": url.query.userscore });
+            }
         }
         _response.end();
     }

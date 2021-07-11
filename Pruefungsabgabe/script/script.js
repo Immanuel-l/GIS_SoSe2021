@@ -142,7 +142,9 @@ var Pruefungsaufgabe;
         }
     }
     if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
-        let highscoresDiv = document.getElementById("highscores");
+        let userscoreDiv = document.getElementById("userscore-div");
+        let usernameDiv = document.getElementById("username-div");
+        showhighscores();
         async function showhighscores() {
             let url = "https://immanuelgis.herokuapp.com/showhighscores";
             let response = await fetch(url);
@@ -150,18 +152,27 @@ var Pruefungsaufgabe;
             let json = JSON.parse(text);
             console.log(json);
             for (let i = 0; i < json.length; i++) {
-                let highscoreContainer = document.createElement("div");
-                highscoreContainer.setAttribute("class", "highscore-container");
                 let username = document.createElement("p");
                 username.setAttribute("class", "username");
                 username.textContent = json[i].username;
-                highscoreContainer.appendChild(username);
+                usernameDiv.appendChild(username);
                 let userscore = document.createElement("p");
                 userscore.setAttribute("class", "userscore");
                 userscore.textContent = json[i].userscore;
-                highscoreContainer.appendChild(userscore);
-                highscoresDiv.appendChild(highscoreContainer);
+                userscoreDiv.appendChild(userscore);
             }
+        }
+    }
+    if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+        let saveUserscoreButton = document.getElementById("save-userscore-button");
+        saveUserscoreButton.addEventListener("click", sendUserscore);
+        async function sendUserscore() {
+            let url = "https://immanuelgis.herokuapp.com/adduserscore";
+            let formData = new FormData(document.forms[0]);
+            let query = new URLSearchParams(formData);
+            url += "?" + query.toString();
+            await fetch(url);
+            document.location.href = "/Pruefungsabgabe/highscores.html";
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));

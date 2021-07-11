@@ -113,7 +113,7 @@ nav ul li a {
 
 .main-form {
     position: absolute;
-    top: 53%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -219,7 +219,17 @@ nav ul li a {
     justify-content: space-around;
     width: 1000px;
     padding: 40px;
+    text-align: center;
 }
+
+#username-div h3, #userscore-div h3 {
+    margin-bottom: 25px;
+}
+
+#username-div .username, #userscore-div .userscore {
+    margin-bottom: 20px;
+}
+
 
 
 /************ADMIN*****************/

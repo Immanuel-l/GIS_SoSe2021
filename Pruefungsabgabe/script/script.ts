@@ -177,7 +177,9 @@ namespace Pruefungsaufgabe {
 
 
     if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
-        let highscoresDiv: HTMLElement = document.getElementById("highscores");
+        let userscoreDiv: HTMLElement = document.getElementById("userscore-div");
+        let usernameDiv: HTMLElement = document.getElementById("username-div");
+        showhighscores();
         async function showhighscores(): Promise<void> {
             let url: string = "https://immanuelgis.herokuapp.com/showhighscores";
             let response: Response = await fetch(url);
@@ -186,20 +188,16 @@ namespace Pruefungsaufgabe {
             console.log(json);
 
             for (let i: number = 0; i < json.length; i++) {
-                let highscoreContainer: HTMLDivElement = document.createElement("div");
-                highscoreContainer.setAttribute("class", "highscore-container");
 
                 let username: HTMLParagraphElement = document.createElement("p");
                 username.setAttribute("class", "username");
                 username.textContent = json[i].username;
-                highscoreContainer.appendChild(username);
+                usernameDiv.appendChild(username);
 
                 let userscore: HTMLParagraphElement = document.createElement("p");
                 userscore.setAttribute("class", "userscore");
                 userscore.textContent = json[i].userscore;
-                highscoreContainer.appendChild(userscore);
-
-                highscoresDiv.appendChild(highscoreContainer);
+                userscoreDiv.appendChild(userscore);
 
             }
         }
@@ -207,6 +205,20 @@ namespace Pruefungsaufgabe {
         interface Highscore {
             username: string;
             userscore: string;
+        }
+    }
+
+
+    if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+        let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
+        saveUserscoreButton.addEventListener("click", sendUserscore);
+        async function sendUserscore(): Promise<void> {
+            let url: string = "https://immanuelgis.herokuapp.com/adduserscore";
+            let formData: FormData = new FormData(document.forms[0]);      
+            let query: URLSearchParams = new URLSearchParams(<any>formData);       
+            url += "?" + query.toString();
+            await fetch(url);
+            document.location.href = "/Pruefungsabgabe/highscores.html";
         }
     }
 }
