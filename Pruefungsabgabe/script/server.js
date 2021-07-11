@@ -33,13 +33,22 @@ var Pruefungsaufgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/send") {
+            if (url.pathname == "/add") {
                 if (await picutres.findOne({ "pictureUrl": url.query.pictureUrl })) {
                     _response.write("Url is already used!");
                 }
                 else {
                     picutres.insertOne({ "pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName });
                 }
+            }
+            if (url.pathname == "/show") {
+                let data = await picutres.find().toArray();
+                let jsonData = JSON.stringify(data);
+                _response.write(jsonData);
+            }
+            if (url.pathname == "/delete") {
+                let search = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
+                picutres.deleteOne({ "pictureName": search.searchParams.get("pictureName") });
             }
         }
         _response.end();

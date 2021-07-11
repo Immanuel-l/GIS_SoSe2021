@@ -118,19 +118,55 @@ namespace Pruefungsaufgabe {
 
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
         let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
-        savePictureButton.addEventListener("click", sendData);
+        savePictureButton.addEventListener("click", sendPicture);
+        showPictures();
 
         let errorMessages: HTMLElement = document.getElementById("error-message");
 
-        async function sendData(): Promise<void> {
-                let url: string = "https://immanuelgis.herokuapp.com/send";
-                let formData: FormData = new FormData(document.forms[0]);      
-                let query: URLSearchParams = new URLSearchParams(<any>formData);       
-                url += "?" + query.toString();
-                let savePictures: Response = await fetch(url);
-                let savePicturesError: string = await savePictures.text();
-                errorMessages.textContent = savePicturesError;
+        async function sendPicture(): Promise<void> {
+            let url: string = "https://immanuelgis.herokuapp.com/add";
+            let formData: FormData = new FormData(document.forms[0]);      
+            let query: URLSearchParams = new URLSearchParams(<any>formData);       
+            url += "?" + query.toString();
+            let savePictures: Response = await fetch(url);
+            let savePicturesError: string = await savePictures.text();
+            errorMessages.textContent = savePicturesError;
+        }
+
+        async function showPictures(): Promise<void> {
+            let url: string = "https://immanuelgis.herokuapp.com/show";
+            let response: Response = await fetch(url);
+            let text: string = await response.text();
+            let json: Picture[] = JSON.parse(text);
+
+            for (let i: number = 0; i < json.length; i++) {
+                let pictureContainer: HTMLDivElement = document.createElement("div");
+                pictureContainer.setAttribute("class", "picture-container");
+
+                let pictureName: HTMLAnchorElement = document.createElement("a");
+                pictureName.setAttribute("class", "picture-name");
+                pictureName.textContent = json[i].name;
+                pictureName.href = json[i].url;
+                pictureContainer.appendChild(pictureName);
+
+                let pictureDeleteButton: HTMLButtonElement = document.createElement("button");
+                pictureDeleteButton.setAttribute("class", "student-delete-button");
+                pictureDeleteButton.addEventListener("click", deletePicture);
+                pictureDeleteButton.textContent = "delete";
+                pictureContainer.appendChild(pictureDeleteButton);
+
+                async function deletePicture(): Promise<void> {
+                    let url: string = "https://immanuelgis.herokuapp.com/delete?pictureName=" + json[i].name;
+                    await fetch(url);
+                    document.location.reload();
+                }
             }
+        }
+
+        interface Picture {
+            url: string;
+            name: string;
+        }
     }
 
 

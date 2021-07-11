@@ -99,16 +99,42 @@ var Pruefungsaufgabe;
     }
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
         let savePictureButton = document.getElementById("save-picture-button");
-        savePictureButton.addEventListener("click", sendData);
+        savePictureButton.addEventListener("click", sendPicture);
+        showPictures();
         let errorMessages = document.getElementById("error-message");
-        async function sendData() {
-            let url = "https://immanuelgis.herokuapp.com/send";
+        async function sendPicture() {
+            let url = "https://immanuelgis.herokuapp.com/add";
             let formData = new FormData(document.forms[0]);
             let query = new URLSearchParams(formData);
             url += "?" + query.toString();
             let savePictures = await fetch(url);
             let savePicturesError = await savePictures.text();
             errorMessages.textContent = savePicturesError;
+        }
+        async function showPictures() {
+            let url = "https://immanuelgis.herokuapp.com/show";
+            let response = await fetch(url);
+            let text = await response.text();
+            let json = JSON.parse(text);
+            for (let i = 0; i < json.length; i++) {
+                let pictureContainer = document.createElement("div");
+                pictureContainer.setAttribute("class", "picture-container");
+                let pictureName = document.createElement("a");
+                pictureName.setAttribute("class", "picture-name");
+                pictureName.textContent = json[i].name;
+                pictureName.href = json[i].url;
+                pictureContainer.appendChild(pictureName);
+                let pictureDeleteButton = document.createElement("button");
+                pictureDeleteButton.setAttribute("class", "student-delete-button");
+                pictureDeleteButton.addEventListener("click", deletePicture);
+                pictureDeleteButton.textContent = "delete";
+                pictureContainer.appendChild(pictureDeleteButton);
+                async function deletePicture() {
+                    let url = "https://immanuelgis.herokuapp.com/delete?pictureName=" + json[i].name;
+                    await fetch(url);
+                    document.location.reload();
+                }
+            }
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));

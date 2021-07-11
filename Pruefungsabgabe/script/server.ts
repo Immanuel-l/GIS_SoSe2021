@@ -38,12 +38,23 @@ export namespace Pruefungsaufgabe {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
-            if (url.pathname == "/send") {
+            if (url.pathname == "/add") {
                 if (await picutres.findOne({"pictureUrl": url.query.pictureUrl})) {
                     _response.write("Url is already used!");
                 } else {
                     picutres.insertOne({"pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName});
                 }
+            }
+
+            if (url.pathname == "/show") {
+                let data: string[] = await picutres.find().toArray();
+                let jsonData: string = JSON.stringify(data);
+                _response.write(jsonData);
+            }
+
+            if (url.pathname == "/delete") {
+                let search: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
+                picutres.deleteOne({"pictureName": search.searchParams.get("pictureName")});
             }
         }
         _response.end();
