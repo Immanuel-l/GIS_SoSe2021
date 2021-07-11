@@ -2,13 +2,14 @@ namespace Pruefungsaufgabe {
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
         sessionStorage.clear();
         loadUrls();
+        let urlArray: string[] = [];
+        console.log(urlArray); 
 
         async function loadUrls(): Promise<void> {
             let url: string = "https://immanuelgis.herokuapp.com/loadurls";
             let response: Response = await fetch(url);
             let text: string = await response.text();
-            let urlArray: string[] = JSON.parse(text);
-            console.log(urlArray); 
+            urlArray = JSON.parse(text);
         }
 
         let status: string = "Started";

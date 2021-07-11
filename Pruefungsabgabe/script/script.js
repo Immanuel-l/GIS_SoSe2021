@@ -4,12 +4,13 @@ var Pruefungsaufgabe;
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {
         sessionStorage.clear();
         loadUrls();
+        let urlArray = [];
+        console.log(urlArray);
         async function loadUrls() {
             let url = "https://immanuelgis.herokuapp.com/loadurls";
             let response = await fetch(url);
             let text = await response.text();
-            let urlArray = JSON.parse(text);
-            console.log(urlArray);
+            urlArray = JSON.parse(text);
         }
         let status = "Started";
         let interval;
