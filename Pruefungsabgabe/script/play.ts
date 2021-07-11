@@ -178,7 +178,7 @@ namespace Pruefungsaufgabe {
                 sessionStorage.setItem("minutes", minutes.toString());
                 sessionStorage.setItem("hours", hours.toString());
                 setTimeout(() => {
-                document.location.href = "/Pruefungsabgabe/userscore.html";
+                    window.location.assign("./userscore.html");
                         }, 500);
             }    
         }

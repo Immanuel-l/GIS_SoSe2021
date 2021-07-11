@@ -16,7 +16,7 @@ var Pruefungsaufgabe;
         let saveUserscoreError = await saveUserscore.text();
         errorMessages.textContent = saveUserscoreError;
         if (errorMessages.textContent == "") {
-            document.location.href = "highscores.html";
+            window.location.assign("./highscores.html");
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));

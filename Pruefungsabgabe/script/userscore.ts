@@ -15,7 +15,7 @@ namespace Pruefungsaufgabe {
         let saveUserscoreError: string = await saveUserscore.text();
         errorMessages.textContent = saveUserscoreError;
         if (errorMessages.textContent == "") {
-            document.location.href = "highscores.html";
+            window.location.assign("./highscores.html");
         }
     }
 }
