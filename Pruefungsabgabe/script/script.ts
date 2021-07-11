@@ -196,7 +196,7 @@ namespace Pruefungsaufgabe {
 
                 let userscore: HTMLParagraphElement = document.createElement("p");
                 userscore.setAttribute("class", "userscore");
-                userscore.textContent = json[i].userscore;
+                userscore.textContent = json[i].userscore.toString();
                 userscoreDiv.appendChild(userscore);
 
             }
@@ -204,7 +204,7 @@ namespace Pruefungsaufgabe {
 
         interface Highscore {
             username: string;
-            userscore: string;
+            userscore: number;
         }
     }
 
