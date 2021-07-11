@@ -65,13 +65,13 @@ export namespace Pruefungsaufgabe {
             }
 
             if (url.pathname == "/showhighscores") {
-                let data: string[] = await highscores.find().sort({"userscore": -1}).toArray();
+                let data: string[] = await highscores.find().sort({"userscore": 1}).toArray();
                 let jsonData: string = JSON.stringify(data);
                 _response.write(jsonData);
             }
 
             if (url.pathname == "/adduserscore") {
-                highscores.insertOne({"username": url.query.username, "userscore": 5});
+                highscores.insertOne({"username": url.query.username, "userscore": url.query.userscore});
             }
         }
         _response.end();

@@ -158,7 +158,7 @@ var Pruefungsaufgabe;
                 usernameDiv.appendChild(username);
                 let userscore = document.createElement("p");
                 userscore.setAttribute("class", "userscore");
-                userscore.textContent = json[i].userscore.toString();
+                userscore.textContent = json[i].userscore;
                 userscoreDiv.appendChild(userscore);
             }
         }
