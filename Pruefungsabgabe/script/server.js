@@ -62,8 +62,8 @@ var Pruefungsaufgabe;
                 _response.write(jsonData);
             }
             if (url.pathname == "/adduserscore") {
-                highscores.insertOne({ "username": url.query.username, "userscore": url.query.userscore });
-                console.log(url.query.userscore);
+                highscores.insertOne({ "username": url.query.username, "userscore": parseInt(url.query.userscore) });
+                console.log(parseInt(url.query.userscore));
             }
         }
         _response.end();
