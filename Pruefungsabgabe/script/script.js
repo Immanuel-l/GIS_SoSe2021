@@ -100,14 +100,15 @@ var Pruefungsaufgabe;
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
         let savePictureButton = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendData);
-        let errorMessage = document.getElementById("error-message");
+        let errorMessages = document.getElementById("error-message");
         async function sendData() {
             let url = "https://immanuelgis.herokuapp.com/send";
             let formData = new FormData(document.forms[0]);
             let query = new URLSearchParams(formData);
             url += "?" + query.toString();
-            await fetch(url);
-            document.forms[0].submit();
+            let savePictures = await fetch(url);
+            let savePicturesError = await savePictures.text();
+            errorMessages.textContent = savePicturesError;
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));

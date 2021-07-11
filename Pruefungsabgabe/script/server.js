@@ -34,10 +34,8 @@ var Pruefungsaufgabe;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/send") {
-                let jsonString = JSON.stringify(url.query);
-                _response.write(jsonString);
                 if (await picutres.findOne({ "pictureUrl": url.query.pictureUrl })) {
-                    _response.write("already used");
+                    _response.write("Url is already used!");
                 }
                 else {
                     picutres.insertOne({ "pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName });

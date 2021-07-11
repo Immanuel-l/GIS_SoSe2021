@@ -39,15 +39,12 @@ p {
     color: steelblue;
 }
 
-.signup-links {
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 600px;
-    display: flex;
-    justify-content: space-around;
+#error-message {
+    text-align: center;
+    color: darkred;
 }
+
+
 
 /******************NAVS**********************/
 
@@ -134,15 +131,6 @@ nav ul li a {
 #admin-form {
     display: flex;
     flex-direction: column;
-}
-
-#error-message {
-    position: absolute;
-    left: 50%;
-    bottom: 150px;
-    transform: translate(-50%, 0);
-    text-align: center;
-    color: darkred;
 }
 
 

@@ -120,15 +120,16 @@ namespace Pruefungsaufgabe {
         let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendData);
 
-        let errorMessage: HTMLElement = document.getElementById("error-message");
+        let errorMessages: HTMLElement = document.getElementById("error-message");
 
         async function sendData(): Promise<void> {
                 let url: string = "https://immanuelgis.herokuapp.com/send";
                 let formData: FormData = new FormData(document.forms[0]);      
                 let query: URLSearchParams = new URLSearchParams(<any>formData);       
                 url += "?" + query.toString();
-                await fetch(url);
-                document.forms[0].submit(); 
+                let savePictures: Response = await fetch(url);
+                let savePicturesError: string = await savePictures.text();
+                errorMessages.textContent = savePicturesError;
             }
     }
 
