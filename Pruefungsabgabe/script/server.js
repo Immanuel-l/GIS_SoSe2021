@@ -68,6 +68,7 @@ var Pruefungsaufgabe;
                 _response.write(jsonData);
             }
             if (url.pathname == "/adduserscore") {
+                let userscoreString = url.query.userscore.toString();
                 if (url.query.username == "") {
                     _response.write("Username is empty!");
                 }
@@ -75,7 +76,7 @@ var Pruefungsaufgabe;
                     _response.write("Userscore is empty!");
                 }
                 else {
-                    highscores.insertOne({ "username": url.query.username, "userscore": url.query.userscore });
+                    highscores.insertOne({ "username": url.query.username, "userscore": parseInt(userscoreString) });
                 }
             }
             if (url.pathname == "/loadurls") {
