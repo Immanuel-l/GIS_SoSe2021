@@ -1,4 +1,6 @@
 namespace Pruefungsaufgabe {
+    console.log(window.location.pathname);
+    
 
     interface Picture {
         pictureUrl: string;
@@ -7,19 +9,6 @@ namespace Pruefungsaufgabe {
 
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
         sessionStorage.clear();
-        loadUrls();
-
-        async function loadUrls(): Promise<void> {
-            let url: string = "https://immanuelgis.herokuapp.com/loadurls";
-            let response: Response = await fetch(url);
-            let text: string = await response.text();
-            let json: Picture[] = JSON.parse(text);
-            for (let i: number = 0; i < json.length; i++) {
-                let urlArray: string[] = [];
-                urlArray.push(json[i].pictureUrl);
-            }
-            
-        }
 
         let status: string = "Started";
         let interval: number;
@@ -33,10 +22,15 @@ namespace Pruefungsaufgabe {
         let cardImg2: HTMLImageElement;
         let cardsFlipped: number = 0;
 
-        let numberArray: number[] = [];
-        for (let i: number = 0; i < 30; i++) {
-            numberArray.push(i); 
+        let numberCards: number[] = [0 , 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
+  
+
+        function getNumberCards(): number {
+            let index: number = Math.floor(Math.random() * numberCards.length);
+            return(numberCards[index]);
+            numberCards.splice(index, 1);
         }
+        
 
         let time: HTMLElement = document.getElementById("timer-time");
         let milliseconds: number = 0;
@@ -49,18 +43,39 @@ namespace Pruefungsaufgabe {
         let hoursContent: string = "0";  
 
         for (let i: number = 0; i < 30; i++) {
+            loadUrls();
 
             let card: HTMLDivElement = document.createElement("div");
             let cardImg: HTMLImageElement = document.createElement("img");
             card.addEventListener("click", flipCard);
             card.setAttribute("class", "card");
             card.setAttribute("id", "card" + i);
-            card.style.order = i + "";
-            cardImg.src = "./img/test_card.png";
             cardImg.setAttribute("id", "card-img" + i);
+            cardImg.setAttribute("name", "" + getNumberCards());
             cardImg.draggable = false;
             card.appendChild(cardImg);
-            cards.appendChild(card);       
+            cards.appendChild(card); 
+
+            async function loadUrls(): Promise<void> {
+                let url: string = "https://immanuelgis.herokuapp.com/loadurls";
+                let response: Response = await fetch(url);
+                let text: string = await response.text();
+                let json: Picture[] = JSON.parse(text);
+                let urlArray: string[] = [];
+                for (let i: number = 0; i < json.length; i++) {
+                    urlArray.push(json[i].pictureUrl);
+                }
+    
+                let allPictures: string[] = [];
+    
+                for (let j: number = 0; j < 15; j++) {
+                    allPictures[j] = urlArray[j];
+                    allPictures[j + 15] = urlArray[j];
+               }
+    
+                cardImg.src = allPictures[i];
+                
+            }
 
 
             function flipCard(): void {
@@ -80,7 +95,7 @@ namespace Pruefungsaufgabe {
                     cardImg2.style.display = "block";
                     console.log(card2 + " Karte2"); 
 
-                    if (card1.getAttribute("id") == card2.getAttribute("id")) {
+                    if (cardImg1.src == cardImg2.src) {
                         end();
                         card1.removeEventListener("click", flipCard);
                         card2.removeEventListener("click", flipCard);
@@ -161,6 +176,10 @@ namespace Pruefungsaufgabe {
                 status = "Stopped";
                 startStop();
                 sessionStorage.setItem("endTimer", time.textContent);
+                sessionStorage.setItem("milliseconds", milliseconds.toString());
+                sessionStorage.setItem("seconds", seconds.toString());
+                sessionStorage.setItem("minutes", minutes.toString());
+                sessionStorage.setItem("hours", hours.toString());
                 setTimeout(() => {
                 document.location.href = "/Pruefungsabgabe/userscore.html";
                         }, 500);
@@ -205,8 +224,8 @@ namespace Pruefungsaufgabe {
                 let pictureName: HTMLAnchorElement = document.createElement("a");
                 pictureName.setAttribute("class", "picture-name");
                 pictureName.textContent = json[i].pictureName;
-               // pictureName.href = json[i].pictureUrl;
-               // pictureName.target = "_blank";
+                pictureName.href = json[i].pictureUrl;
+                pictureName.target = "_blank";
                 pictureContainer.appendChild(pictureName);
 
                 let pictureDeleteButton: HTMLButtonElement = document.createElement("button");
@@ -256,15 +275,17 @@ namespace Pruefungsaufgabe {
 
         interface Highscore {
             username: string;
-            userscore: number;
+            userscore: string;
         }
     }
 
 
     if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+        let userTime: HTMLElement = document.getElementById("user-time");
+        userTime.value = 0;
         let yourTime: HTMLElement = document.getElementById("your-time");
         let timer: string = sessionStorage.getItem("endTimer");
-        yourTime.textContent = "Your Time: " + timer;
+        yourTime.textContent = "" + timer; 
 
         let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);
