@@ -72,8 +72,16 @@ export namespace Pruefungsaufgabe {
 
             if (url.pathname == "/adduserscore") {
                 let userscoreString: string =  url.query.userscore.toString();
-                highscores.insertOne({"username": url.query.username, "userscore": parseInt(userscoreString)});
-                
+
+                if (url.query.username == "") {
+                    _response.write("Username is empty");
+                }
+                else if (url.query.userscore == "") {
+                    _response.write("Userscore is empty");
+                } 
+                else {
+                    highscores.insertOne({"username": url.query.username, "userscore": parseInt(userscoreString)});
+                }
             }
         }
         _response.end();
