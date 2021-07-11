@@ -5,10 +5,6 @@ import * as Mongo from "mongodb";
 export namespace Pruefungsaufgabe {
     let picutres: Mongo.Collection;
 
-    interface Picture {
-        [type: string]: string | string[];
-    }
-
     console.log("Starting server");
     let port: number = Number(process.env.PORT);
     if (!port) {
@@ -38,26 +34,21 @@ export namespace Pruefungsaufgabe {
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
         if (_request.url) {
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
             if (url.pathname == "/send") {
-                for (let key in url.query) {
-                    console.log(key + ": " + url.query[key]);
-                    _response.write(key + ": " + url.query[key] + " ");
-                }
-
                 let jsonString: string = JSON.stringify(url.query);
                 _response.write(jsonString);
 
-                storeUser(url.query);
+                if (await picutres.findOne({"pictureUrl": url.query.pictureUrl})) {
+                    _response.write("already used");
+                } else {
+                    picutres.insertOne({"pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName});
+                }
             }
         }
         _response.end();
-    }
-
-    function storeUser(_picture: Picture): void {
-        picutres.insertOne(_picture);
     }
 }
