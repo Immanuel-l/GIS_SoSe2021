@@ -1,7 +1,6 @@
 "use strict";
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
-    console.log(window.location.pathname);
     if (window.location.pathname) {
         sessionStorage.clear();
         let status = "Started";
@@ -157,7 +156,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == window.location.pathname) {
+    if (window.location.pathname) {
         let showPicturesDiv = document.getElementById("show-pictures");
         let savePictureButton = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
@@ -203,7 +202,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/highscores.html") {
+    if (window.location.pathname) {
         let userscoreDiv = document.getElementById("userscore-div");
         let usernameDiv = document.getElementById("username-div");
         showhighscores();
@@ -225,7 +224,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/userscore.html") {
+    if (window.location.pathname) {
         let userTime = document.getElementById("user-time");
         let yourTime = document.getElementById("your-time");
         let timer = sessionStorage.getItem("endTimer");

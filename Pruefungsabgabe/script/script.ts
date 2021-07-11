@@ -1,6 +1,4 @@
-namespace Pruefungsaufgabe {
-    console.log(window.location.pathname);
-    
+namespace Pruefungsaufgabe {   
 
     interface Picture {
         pictureUrl: string;
@@ -190,7 +188,7 @@ namespace Pruefungsaufgabe {
 
     }
 
-    if (window.location.pathname == window.location.pathname) {
+    if (window.location.pathname) {
         let showPicturesDiv: HTMLElement = document.getElementById("show-pictures");
         let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
@@ -247,7 +245,7 @@ namespace Pruefungsaufgabe {
 
 
 
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/highscores.html") {
+    if (window.location.pathname) {
         let userscoreDiv: HTMLElement = document.getElementById("userscore-div");
         let usernameDiv: HTMLElement = document.getElementById("username-div");
         showhighscores();
@@ -280,7 +278,7 @@ namespace Pruefungsaufgabe {
     }
 
 
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/userscore.html") {
+    if (window.location.pathname) {
         let userTime: HTMLElement = document.getElementById("user-time");
         let yourTime: HTMLElement = document.getElementById("your-time");
         let timer: string = sessionStorage.getItem("endTimer");
