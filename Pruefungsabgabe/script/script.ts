@@ -7,7 +7,7 @@ namespace Pruefungsaufgabe {
         pictureName: string;
     }
 
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/play.html") {  
+    if (window.location.pathname) {  
         sessionStorage.clear();
 
         let status: string = "Started";
@@ -190,7 +190,7 @@ namespace Pruefungsaufgabe {
 
     }
 
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/admin.html") {
+    if (window.location.pathname == window.location.pathname) {
         let showPicturesDiv: HTMLElement = document.getElementById("show-pictures");
         let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);

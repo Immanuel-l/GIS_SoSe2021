@@ -2,7 +2,7 @@
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
     console.log(window.location.pathname);
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/play.html") {
+    if (window.location.pathname) {
         sessionStorage.clear();
         let status = "Started";
         let interval;
@@ -157,7 +157,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/admin.html") {
+    if (window.location.pathname == window.location.pathname) {
         let showPicturesDiv = document.getElementById("show-pictures");
         let savePictureButton = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
