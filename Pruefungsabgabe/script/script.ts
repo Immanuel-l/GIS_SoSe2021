@@ -1,16 +1,23 @@
 namespace Pruefungsaufgabe {
+
+    interface Picture {
+        pictureUrl: string;
+        pictureName: string;
+    }
+
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
         sessionStorage.clear();
         loadUrls();
-        let urlArray: string[] = [];
-        console.log(urlArray); 
 
         async function loadUrls(): Promise<void> {
             let url: string = "https://immanuelgis.herokuapp.com/loadurls";
             let response: Response = await fetch(url);
             let text: string = await response.text();
-            urlArray = JSON.parse(text);
-            console.log(text);
+            let json: Picture[] = JSON.parse(text);
+            for (let i: number = 0; i < json.length; i++) {
+                let urlArray: string[] = [];
+                urlArray.push(json[i].pictureUrl);
+            }
             
         }
 
@@ -216,11 +223,6 @@ namespace Pruefungsaufgabe {
                     document.location.reload();
                 }
             }
-        }
-
-        interface Picture {
-            pictureUrl: string;
-            pictureName: string;
         }
     }
 

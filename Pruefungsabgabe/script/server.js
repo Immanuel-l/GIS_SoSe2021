@@ -80,7 +80,7 @@ var Pruefungsaufgabe;
                 }
             }
             if (url.pathname == "/loadurls") {
-                let data = await picutres.find({ "pictureUrl": url.query.pictureUrl }).toArray();
+                let data = await picutres.find().toArray();
                 let jsonData = JSON.stringify(data);
                 _response.write(jsonData);
             }
