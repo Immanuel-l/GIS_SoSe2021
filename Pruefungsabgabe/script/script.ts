@@ -1,39 +1,12 @@
 namespace Pruefungsaufgabe {
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
-        window.setInterval(startTimer, 10);
+        let status: string = "Started";
+        let interval: number;
         let cards: HTMLElement = document.getElementById("cards");
         let cardImg: HTMLImageElement = document.createElement("img");
-        let pairs: HTMLElement = document.getElementById("pairs-count");
-      //  let cardFlipped: number = 0;
-
+        let pairsCount: HTMLElement = document.getElementById("pairs-count");
         let pair: number = 0;
-        let card1: string = "";
-        let card2: string = "";
 
-        // let random: number;
-        // let randomArray: number;
-        // let random1: number;
-        // let random2: number;
-
-        // function randomCards(start: number, end: number): number[] {
-        //     let arrayList: number[] = [];
-        //     for (let i: number = start; i < end; i++) {
-        //         arrayList.push(i);
-        //     }     
-
-        //     random = Math.floor(Math.random() * arrayList.length);
-        //     randomArray = arrayList[random];
-
-        //     console.log(randomArray);
-            
-        //     console.log(arrayList.splice(arrayList.indexOf(randomArray)));
-        //     return arrayList;
-        // }
-
-        // randomCards(0 , 15);
-
-        
-        
 
         let time: HTMLElement = document.getElementById("timer-time");
         let milliseconds: number = 0;
@@ -43,36 +16,18 @@ namespace Pruefungsaufgabe {
         let minutes: number = 0;
         let minutesContent: string = "0";
         let hours: number = 0;
-        let hoursContent: string = "0";
-        
-        
+        let hoursContent: string = "0";  
 
         for (let i: number = 0; i < 30; i++) {
             let card: HTMLDivElement = document.createElement("div");
             cardImg = document.createElement("img");
-            card.addEventListener("click", flipCard);
+           // card.addEventListener("click", flipCard);
             card.setAttribute("class", "card");
             cardImg.src = "./img/test_card.png";
             cardImg.setAttribute("id", "card-img" + i);
             cardImg.draggable = false;
             card.appendChild(cardImg);
             cards.appendChild(card);
-        }
-
-        function flipCard(): void {
-            console.log();
-            
-        }
-
-        checkPair();
-
-
-        function checkPair(): void {
-            if (card1 == card2 && card1 != "" && card2 != "") {
-                pair++;
-                pairs.textContent = pair.toString();
-                
-            }
         }
 
 
@@ -114,6 +69,38 @@ namespace Pruefungsaufgabe {
                 hoursContent = "" + hours;
             }
         }
+        startStop();
+
+        function startStop(): void {
+            if (status == "Started") {
+                interval = window.setInterval(startTimer, 10);
+                status = "Stopped";
+            }
+            else if (status == "Stopped") {
+                window.clearInterval(interval);
+                status = "Started";
+            
+            //Quelle: https://www.youtube.com/watch?v=TdJRtsYLuaU
+            }
+        }
+
+        function pairs(): void {
+            if (pair >= 15) {
+                status = "Stopped";
+                startStop();
+                sessionStorage.setItem("endTimer", time.textContent);
+                document.location.href = "/Pruefungsabgabe/userscore.html";
+            } else {
+                pair++;
+                pairsCount.textContent = pair.toString();
+            }
+        }
+
+
+        window.setInterval(pairs, 200);
+
+
+
     }
 
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
@@ -132,7 +119,9 @@ namespace Pruefungsaufgabe {
             let savePictures: Response = await fetch(url);
             let savePicturesError: string = await savePictures.text();
             errorMessages.textContent = savePicturesError;
-            document.location.reload();
+            if (errorMessages.textContent == "") {
+                document.location.reload();
+            }
         }
 
         async function showPictures(): Promise<void> {
@@ -210,6 +199,10 @@ namespace Pruefungsaufgabe {
 
 
     if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+        let yourTime: HTMLElement = document.getElementById("your-time");
+        let timer: string = sessionStorage.getItem("endTimer");
+        yourTime.textContent = "Your Time: " + timer;
+
         let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);
         let errorMessages: HTMLElement = document.getElementById("error-message");
@@ -221,7 +214,9 @@ namespace Pruefungsaufgabe {
             let saveUserscore: Response = await fetch(url);
             let saveUserscoreError: string = await saveUserscore.text();
             errorMessages.textContent = saveUserscoreError;
-           // document.location.href = "/Pruefungsabgabe/highscores.html";
+            if (errorMessages.textContent == "") {
+                document.location.href = "/Pruefungsabgabe/highscores.html";
+            }
         }
     }
 }

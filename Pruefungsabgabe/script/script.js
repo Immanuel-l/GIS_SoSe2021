@@ -2,30 +2,12 @@
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {
-        window.setInterval(startTimer, 10);
+        let status = "Started";
+        let interval;
         let cards = document.getElementById("cards");
         let cardImg = document.createElement("img");
-        let pairs = document.getElementById("pairs-count");
-        //  let cardFlipped: number = 0;
+        let pairsCount = document.getElementById("pairs-count");
         let pair = 0;
-        let card1 = "";
-        let card2 = "";
-        // let random: number;
-        // let randomArray: number;
-        // let random1: number;
-        // let random2: number;
-        // function randomCards(start: number, end: number): number[] {
-        //     let arrayList: number[] = [];
-        //     for (let i: number = start; i < end; i++) {
-        //         arrayList.push(i);
-        //     }     
-        //     random = Math.floor(Math.random() * arrayList.length);
-        //     randomArray = arrayList[random];
-        //     console.log(randomArray);
-        //     console.log(arrayList.splice(arrayList.indexOf(randomArray)));
-        //     return arrayList;
-        // }
-        // randomCards(0 , 15);
         let time = document.getElementById("timer-time");
         let milliseconds = 0;
         let millisecondsContent = "0";
@@ -38,23 +20,13 @@ var Pruefungsaufgabe;
         for (let i = 0; i < 30; i++) {
             let card = document.createElement("div");
             cardImg = document.createElement("img");
-            card.addEventListener("click", flipCard);
+            // card.addEventListener("click", flipCard);
             card.setAttribute("class", "card");
             cardImg.src = "./img/test_card.png";
             cardImg.setAttribute("id", "card-img" + i);
             cardImg.draggable = false;
             card.appendChild(cardImg);
             cards.appendChild(card);
-        }
-        function flipCard() {
-            console.log();
-        }
-        checkPair();
-        function checkPair() {
-            if (card1 == card2 && card1 != "" && card2 != "") {
-                pair++;
-                pairs.textContent = pair.toString();
-            }
         }
         function startTimer() {
             milliseconds++;
@@ -96,6 +68,31 @@ var Pruefungsaufgabe;
                 hoursContent = "" + hours;
             }
         }
+        startStop();
+        function startStop() {
+            if (status == "Started") {
+                interval = window.setInterval(startTimer, 10);
+                status = "Stopped";
+            }
+            else if (status == "Stopped") {
+                window.clearInterval(interval);
+                status = "Started";
+                //Quelle: https://www.youtube.com/watch?v=TdJRtsYLuaU
+            }
+        }
+        function pairs() {
+            if (pair >= 15) {
+                status = "Stopped";
+                startStop();
+                sessionStorage.setItem("endTimer", time.textContent);
+                document.location.href = "/Pruefungsabgabe/userscore.html";
+            }
+            else {
+                pair++;
+                pairsCount.textContent = pair.toString();
+            }
+        }
+        window.setInterval(pairs, 200);
     }
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
         let showPicturesDiv = document.getElementById("show-pictures");
@@ -111,7 +108,9 @@ var Pruefungsaufgabe;
             let savePictures = await fetch(url);
             let savePicturesError = await savePictures.text();
             errorMessages.textContent = savePicturesError;
-            document.location.reload();
+            if (errorMessages.textContent == "") {
+                document.location.reload();
+            }
         }
         async function showPictures() {
             let url = "https://immanuelgis.herokuapp.com/showpictures";
@@ -164,6 +163,9 @@ var Pruefungsaufgabe;
         }
     }
     if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+        let yourTime = document.getElementById("your-time");
+        let timer = sessionStorage.getItem("endTimer");
+        yourTime.textContent = "Your Time: " + timer;
         let saveUserscoreButton = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);
         let errorMessages = document.getElementById("error-message");
@@ -175,7 +177,9 @@ var Pruefungsaufgabe;
             let saveUserscore = await fetch(url);
             let saveUserscoreError = await saveUserscore.text();
             errorMessages.textContent = saveUserscoreError;
-            // document.location.href = "/Pruefungsabgabe/highscores.html";
+            if (errorMessages.textContent == "") {
+                document.location.href = "/Pruefungsabgabe/highscores.html";
+            }
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));

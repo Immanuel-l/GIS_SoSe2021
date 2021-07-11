@@ -1,7 +1,6 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
-import { userInfo } from "os";
 
 export namespace Pruefungsaufgabe {
     let picutres: Mongo.Collection;
@@ -72,7 +71,7 @@ export namespace Pruefungsaufgabe {
             }
 
             if (url.pathname == "/showhighscores") {
-                let data: string[] = await highscores.find().sort({"userscore": -1}).toArray();
+                let data: string[] = await highscores.find().sort({"userscore": -1}).limit(10).toArray();
                 let jsonData: string = JSON.stringify(data);
                 _response.write(jsonData);
             }

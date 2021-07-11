@@ -63,7 +63,7 @@ var Pruefungsaufgabe;
                 picutres.deleteOne({ "pictureName": search.searchParams.get("pictureName") });
             }
             if (url.pathname == "/showhighscores") {
-                let data = await highscores.find().sort({ "userscore": -1 }).toArray();
+                let data = await highscores.find().sort({ "userscore": -1 }).limit(10).toArray();
                 let jsonData = JSON.stringify(data);
                 _response.write(jsonData);
             }
