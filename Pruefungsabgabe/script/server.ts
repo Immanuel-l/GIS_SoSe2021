@@ -1,6 +1,7 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
+import { userInfo } from "os";
 
 export namespace Pruefungsaufgabe {
     let picutres: Mongo.Collection;
@@ -48,6 +49,12 @@ export namespace Pruefungsaufgabe {
                 else if (await picutres.findOne({"pictureName": url.query.pictureName})) {
                     _response.write("Name is already used!");
                 } 
+                else if (url.query.pictureUrl == "") {
+                    _response.write("Url is empty!");
+                }
+                else if (url.query.pictureName == "") {
+                    _response.write("Name is empty!");
+                }
                 else {
                     picutres.insertOne({"pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName});
                 }
@@ -74,10 +81,10 @@ export namespace Pruefungsaufgabe {
                 let userscoreString: string =  url.query.userscore.toString();
 
                 if (url.query.username == "") {
-                    _response.write("Username is empty");
+                    _response.write("Username is empty!");
                 }
                 else if (url.query.userscore == "") {
-                    _response.write("Userscore is empty");
+                    _response.write("Userscore is empty!");
                 } 
                 else {
                     highscores.insertOne({"username": url.query.username, "userscore": parseInt(userscoreString)});

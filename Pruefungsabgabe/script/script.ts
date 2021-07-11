@@ -212,13 +212,16 @@ namespace Pruefungsaufgabe {
     if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
         let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);
+        let errorMessages: HTMLElement = document.getElementById("error-message");
         async function sendUserscore(): Promise<void> {
             let url: string = "https://immanuelgis.herokuapp.com/adduserscore";
             let formData: FormData = new FormData(document.forms[0]);      
             let query: URLSearchParams = new URLSearchParams(<any>formData);       
             url += "?" + query.toString();
-            await fetch(url);
-            document.location.href = "/Pruefungsabgabe/highscores.html";
+            let saveUserscore: Response = await fetch(url);
+            let saveUserscoreError: string = await saveUserscore.text();
+            errorMessages.textContent = saveUserscoreError;
+           // document.location.href = "/Pruefungsabgabe/highscores.html";
         }
     }
 }

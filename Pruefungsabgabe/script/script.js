@@ -166,13 +166,16 @@ var Pruefungsaufgabe;
     if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
         let saveUserscoreButton = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);
+        let errorMessages = document.getElementById("error-message");
         async function sendUserscore() {
             let url = "https://immanuelgis.herokuapp.com/adduserscore";
             let formData = new FormData(document.forms[0]);
             let query = new URLSearchParams(formData);
             url += "?" + query.toString();
-            await fetch(url);
-            document.location.href = "/Pruefungsabgabe/highscores.html";
+            let saveUserscore = await fetch(url);
+            let saveUserscoreError = await saveUserscore.text();
+            errorMessages.textContent = saveUserscoreError;
+            // document.location.href = "/Pruefungsabgabe/highscores.html";
         }
     }
 })(Pruefungsaufgabe || (Pruefungsaufgabe = {}));
