@@ -1,21 +1,31 @@
 namespace Pruefungsaufgabe { 
-    let yourTime: HTMLElement = document.getElementById("your-time");
-    let timer: string = sessionStorage.getItem("endTimer");
-    yourTime.textContent = "" + timer; 
+    let userscoreDiv: HTMLElement = document.getElementById("userscore-div");
+    let usernameDiv: HTMLElement = document.getElementById("username-div");
+    showhighscores();
+    async function showhighscores(): Promise<void> {
+        let url: string = "https://immanuelgis.herokuapp.com/showhighscores";
+        let response: Response = await fetch(url);
+        let text: string = await response.text();
+        let json: Highscore[] = JSON.parse(text);
+        console.log(json);
 
-    let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
-    saveUserscoreButton.addEventListener("click", sendUserscore);
-    let errorMessages: HTMLElement = document.getElementById("error-message");
-    async function sendUserscore(): Promise<void> {
-        let url: string = "https://immanuelgis.herokuapp.com/adduserscore";
-        let formData: FormData = new FormData(document.forms[0]);      
-        let query: URLSearchParams = new URLSearchParams(<any>formData);       
-        url += "?" + query.toString();
-        let saveUserscore: Response = await fetch(url);
-        let saveUserscoreError: string = await saveUserscore.text();
-        errorMessages.textContent = saveUserscoreError;
-        if (errorMessages.textContent == "") {
-            document.location.href = "highscores.html";
+        for (let i: number = 0; i < json.length; i++) {
+
+            let username: HTMLParagraphElement = document.createElement("p");
+            username.setAttribute("class", "username");
+            username.textContent = json[i].username;
+            usernameDiv.appendChild(username);
+
+            let userscore: HTMLParagraphElement = document.createElement("p");
+            userscore.setAttribute("class", "userscore");
+            userscore.textContent = json[i].userscore.toString();
+            userscoreDiv.appendChild(userscore);
+
         }
+    }
+
+    interface Highscore {
+        username: string;
+        userscore: number;
     }
 }
