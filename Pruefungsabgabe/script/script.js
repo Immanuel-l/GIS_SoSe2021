@@ -3,12 +3,12 @@ var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {
         sessionStorage.clear();
-        let urlArray;
+        loadUrls();
         async function loadUrls() {
             let url = "https://immanuelgis.herokuapp.com/loadurls";
             let response = await fetch(url);
             let text = await response.text();
-            urlArray = JSON.parse(text);
+            let urlArray = JSON.parse(text);
             console.log(urlArray);
         }
         let status = "Started";
