@@ -79,6 +79,11 @@ var Pruefungsaufgabe;
                     highscores.insertOne({ "username": url.query.username, "userscore": parseInt(userscoreString) });
                 }
             }
+            if (url.pathname == "/loadurls") {
+                let data = await picutres.find({ "pictureUrl": url.query.pictureUrl }).toArray();
+                let jsonData = JSON.stringify(data);
+                _response.write(jsonData);
+            }
         }
         _response.end();
     }

@@ -1,12 +1,33 @@
 namespace Pruefungsaufgabe {
     if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
+        sessionStorage.clear();
+        let urlArray: string[];
+
+        async function loadUrls(): Promise<void> {
+            let url: string = "https://immanuelgis.herokuapp.com/loadurls";
+            let response: Response = await fetch(url);
+            let text: string = await response.text();
+            urlArray = JSON.parse(text);
+            console.log(urlArray);
+            
+        }
+
         let status: string = "Started";
         let interval: number;
         let cards: HTMLElement = document.getElementById("cards");
-        let cardImg: HTMLImageElement = document.createElement("img");
         let pairsCount: HTMLElement = document.getElementById("pairs-count");
         let pair: number = 0;
 
+        let card1: HTMLDivElement;
+        let cardImg1: HTMLImageElement;
+        let card2: HTMLDivElement;
+        let cardImg2: HTMLImageElement;
+        let cardsFlipped: number = 0;
+
+        let numberArray: number[] = [];
+        for (let i: number = 0; i < 30; i++) {
+            numberArray.push(i); 
+        }
 
         let time: HTMLElement = document.getElementById("timer-time");
         let milliseconds: number = 0;
@@ -19,15 +40,55 @@ namespace Pruefungsaufgabe {
         let hoursContent: string = "0";  
 
         for (let i: number = 0; i < 30; i++) {
+
             let card: HTMLDivElement = document.createElement("div");
-            cardImg = document.createElement("img");
-           // card.addEventListener("click", flipCard);
+            let cardImg: HTMLImageElement = document.createElement("img");
+            card.addEventListener("click", flipCard);
             card.setAttribute("class", "card");
+            card.setAttribute("id", "card" + i);
+            card.style.order = i + "";
             cardImg.src = "./img/test_card.png";
             cardImg.setAttribute("id", "card-img" + i);
             cardImg.draggable = false;
             card.appendChild(cardImg);
-            cards.appendChild(card);
+            cards.appendChild(card);       
+
+
+            function flipCard(): void {
+                cardsFlipped++;
+
+                if (cardsFlipped == 1) {
+                    card1 = card;
+                    cardImg1 = cardImg;
+                    card1.classList.toggle("flipcard");
+                    cardImg1.style.display = "block";
+                    console.log(card1 + " Karte1");
+                }
+                if (cardsFlipped == 2) {
+                    card2 = card;
+                    cardImg2 = cardImg;
+                    card2.classList.toggle("flipcard");
+                    cardImg2.style.display = "block";
+                    console.log(card2 + " Karte2"); 
+
+                    if (card1.getAttribute("id") == card2.getAttribute("id")) {
+                        end();
+                        card1.removeEventListener("click", flipCard);
+                        card2.removeEventListener("click", flipCard);
+                        cardsFlipped = 0;
+                    } else  {
+                        setTimeout(() => {
+                        card1.classList.toggle("flipcard");
+                        card2.classList.toggle("flipcard");
+                        cardsFlipped = 0;
+                                }, 1000);
+                    } 
+                }
+                
+                
+                
+                
+            }
         }
 
 
@@ -84,20 +145,18 @@ namespace Pruefungsaufgabe {
             }
         }
 
-        function pairs(): void {
-            if (pair >= 15) {
+        function end(): void {
+            pair++;
+            pairsCount.textContent = pair.toString();
+            if (pair == 15) {
                 status = "Stopped";
                 startStop();
                 sessionStorage.setItem("endTimer", time.textContent);
+                setTimeout(() => {
                 document.location.href = "/Pruefungsabgabe/userscore.html";
-            } else {
-                pair++;
-                pairsCount.textContent = pair.toString();
-            }
+                        }, 500);
+            }    
         }
-
-
-        window.setInterval(pairs, 200);
 
 
 

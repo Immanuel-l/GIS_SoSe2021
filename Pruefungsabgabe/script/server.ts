@@ -89,6 +89,12 @@ export namespace Pruefungsaufgabe {
                     highscores.insertOne({"username": url.query.username, "userscore": parseInt(userscoreString)});
                 }
             }
+
+            if (url.pathname == "/loadurls") {
+                let data: string[] = await picutres.find({"pictureUrl": url.query.pictureUrl}).toArray();
+                let jsonData: string = JSON.stringify(data);
+                _response.write(jsonData);
+            }
         }
         _response.end();
     }
