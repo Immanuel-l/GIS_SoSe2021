@@ -104,20 +104,20 @@ var Pruefungsaufgabe;
         showPictures();
         let errorMessages = document.getElementById("error-message");
         async function sendPicture() {
-            let url = "https://immanuelgis.herokuapp.com/add";
+            let url = "https://immanuelgis.herokuapp.com/addpicture";
             let formData = new FormData(document.forms[0]);
             let query = new URLSearchParams(formData);
             url += "?" + query.toString();
             let savePictures = await fetch(url);
             let savePicturesError = await savePictures.text();
             errorMessages.textContent = savePicturesError;
+            document.location.reload();
         }
         async function showPictures() {
-            let url = "https://immanuelgis.herokuapp.com/show";
+            let url = "https://immanuelgis.herokuapp.com/showpictures";
             let response = await fetch(url);
             let text = await response.text();
             let json = JSON.parse(text);
-            console.log(json);
             for (let i = 0; i < json.length; i++) {
                 let pictureContainer = document.createElement("div");
                 pictureContainer.setAttribute("class", "picture-container");
@@ -138,6 +138,29 @@ var Pruefungsaufgabe;
                     await fetch(url);
                     document.location.reload();
                 }
+            }
+        }
+    }
+    if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
+        let highscoresDiv = document.getElementById("highscores");
+        async function showhighscores() {
+            let url = "https://immanuelgis.herokuapp.com/showhighscores";
+            let response = await fetch(url);
+            let text = await response.text();
+            let json = JSON.parse(text);
+            console.log(json);
+            for (let i = 0; i < json.length; i++) {
+                let highscoreContainer = document.createElement("div");
+                highscoreContainer.setAttribute("class", "highscore-container");
+                let username = document.createElement("p");
+                username.setAttribute("class", "username");
+                username.textContent = json[i].username;
+                highscoreContainer.appendChild(username);
+                let userscore = document.createElement("p");
+                userscore.setAttribute("class", "userscore");
+                userscore.textContent = json[i].userscore;
+                highscoreContainer.appendChild(userscore);
+                highscoresDiv.appendChild(highscoreContainer);
             }
         }
     }

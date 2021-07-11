@@ -4,6 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace Pruefungsaufgabe {
     let picutres: Mongo.Collection;
+    let highscores: Mongo.Collection;
 
     console.log("Starting server");
     let port: number = Number(process.env.PORT);
@@ -27,7 +28,9 @@ export namespace Pruefungsaufgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         picutres = mongoClient.db("Pruefungsaufgabe").collection("Pictures");
+        highscores = mongoClient.db("Pruefungsaufgabe").collection("Highscores");
         console.log("Database connection ", picutres != undefined);
+        console.log("Database connection ", highscores != undefined);
     }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
@@ -38,7 +41,7 @@ export namespace Pruefungsaufgabe {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
-            if (url.pathname == "/add") {
+            if (url.pathname == "/addpicture") {
                 if (await picutres.findOne({"pictureUrl": url.query.pictureUrl})) {
                     _response.write("Url is already used!");
                 }
@@ -50,7 +53,7 @@ export namespace Pruefungsaufgabe {
                 }
             }
 
-            if (url.pathname == "/show") {
+            if (url.pathname == "/showpictures") {
                 let data: string[] = await picutres.find().toArray();
                 let jsonData: string = JSON.stringify(data);
                 _response.write(jsonData);
@@ -59,6 +62,12 @@ export namespace Pruefungsaufgabe {
             if (url.pathname == "/delete") {
                 let search: URL = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
                 picutres.deleteOne({"pictureName": search.searchParams.get("pictureName")});
+            }
+
+            if (url.pathname == "/showhighscores") {
+                let data: string[] = await highscores.find().toArray();
+                let jsonData: string = JSON.stringify(data);
+                _response.write(jsonData);
             }
         }
         _response.end();

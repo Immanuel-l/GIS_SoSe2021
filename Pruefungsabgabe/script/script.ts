@@ -125,22 +125,21 @@ namespace Pruefungsaufgabe {
         let errorMessages: HTMLElement = document.getElementById("error-message");
 
         async function sendPicture(): Promise<void> {
-            let url: string = "https://immanuelgis.herokuapp.com/add";
+            let url: string = "https://immanuelgis.herokuapp.com/addpicture";
             let formData: FormData = new FormData(document.forms[0]);      
             let query: URLSearchParams = new URLSearchParams(<any>formData);       
             url += "?" + query.toString();
             let savePictures: Response = await fetch(url);
             let savePicturesError: string = await savePictures.text();
             errorMessages.textContent = savePicturesError;
+            document.location.reload();
         }
 
         async function showPictures(): Promise<void> {
-            let url: string = "https://immanuelgis.herokuapp.com/show";
+            let url: string = "https://immanuelgis.herokuapp.com/showpictures";
             let response: Response = await fetch(url);
             let text: string = await response.text();
-            let json: Picture[] = JSON.parse(text);
-            console.log(json);
-            
+            let json: Picture[] = JSON.parse(text);        
 
             for (let i: number = 0; i < json.length; i++) {
                 let pictureContainer: HTMLDivElement = document.createElement("div");
@@ -177,6 +176,37 @@ namespace Pruefungsaufgabe {
 
 
 
+    if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
+        let highscoresDiv: HTMLElement = document.getElementById("highscores");
+        async function showhighscores(): Promise<void> {
+            let url: string = "https://immanuelgis.herokuapp.com/showhighscores";
+            let response: Response = await fetch(url);
+            let text: string = await response.text();
+            let json: Highscore[] = JSON.parse(text);
+            console.log(json);
 
+            for (let i: number = 0; i < json.length; i++) {
+                let highscoreContainer: HTMLDivElement = document.createElement("div");
+                highscoreContainer.setAttribute("class", "highscore-container");
 
+                let username: HTMLParagraphElement = document.createElement("p");
+                username.setAttribute("class", "username");
+                username.textContent = json[i].username;
+                highscoreContainer.appendChild(username);
+
+                let userscore: HTMLParagraphElement = document.createElement("p");
+                userscore.setAttribute("class", "userscore");
+                userscore.textContent = json[i].userscore;
+                highscoreContainer.appendChild(userscore);
+
+                highscoresDiv.appendChild(highscoreContainer);
+
+            }
+        }
+
+        interface Highscore {
+            username: string;
+            userscore: string;
+        }
+    }
 }

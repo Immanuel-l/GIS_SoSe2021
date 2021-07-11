@@ -7,6 +7,7 @@ const Mongo = require("mongodb");
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
     let picutres;
+    let highscores;
     console.log("Starting server");
     let port = Number(process.env.PORT);
     if (!port) {
@@ -25,7 +26,9 @@ var Pruefungsaufgabe;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         picutres = mongoClient.db("Pruefungsaufgabe").collection("Pictures");
+        highscores = mongoClient.db("Pruefungsaufgabe").collection("Highscores");
         console.log("Database connection ", picutres != undefined);
+        console.log("Database connection ", highscores != undefined);
     }
     async function handleRequest(_request, _response) {
         console.log("I hear voices!");
@@ -33,7 +36,7 @@ var Pruefungsaufgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/add") {
+            if (url.pathname == "/addpicture") {
                 if (await picutres.findOne({ "pictureUrl": url.query.pictureUrl })) {
                     _response.write("Url is already used!");
                 }
@@ -44,7 +47,7 @@ var Pruefungsaufgabe;
                     picutres.insertOne({ "pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName });
                 }
             }
-            if (url.pathname == "/show") {
+            if (url.pathname == "/showpictures") {
                 let data = await picutres.find().toArray();
                 let jsonData = JSON.stringify(data);
                 _response.write(jsonData);
@@ -52,6 +55,11 @@ var Pruefungsaufgabe;
             if (url.pathname == "/delete") {
                 let search = new URL(_request.url, "https://immanuelgis.herokuapp.com/");
                 picutres.deleteOne({ "pictureName": search.searchParams.get("pictureName") });
+            }
+            if (url.pathname == "/showhighscores") {
+                let data = await highscores.find().toArray();
+                let jsonData = JSON.stringify(data);
+                _response.write(jsonData);
             }
         }
         _response.end();
