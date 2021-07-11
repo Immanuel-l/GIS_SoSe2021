@@ -3,9 +3,9 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace Pruefungsaufgabe {
-    let users: Mongo.Collection;
+    let picutres: Mongo.Collection;
 
-    interface User {
+    interface Picture {
         [type: string]: string | string[];
     }
 
@@ -30,8 +30,8 @@ export namespace Pruefungsaufgabe {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        users = mongoClient.db("Pruefungsaufgabe").collection("Users");
-        console.log("Database connection ", users != undefined);
+        picutres = mongoClient.db("Pruefungsaufgabe").collection("Pictures");
+        console.log("Database connection ", picutres != undefined);
     }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
@@ -57,7 +57,7 @@ export namespace Pruefungsaufgabe {
         _response.end();
     }
 
-    function storeUser(_user: User): void {
-        users.insertOne(_user);
+    function storeUser(_picture: Picture): void {
+        picutres.insertOne(_picture);
     }
 }

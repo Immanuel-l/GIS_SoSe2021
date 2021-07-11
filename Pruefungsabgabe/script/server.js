@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
-    let users;
+    let picutres;
     console.log("Starting server");
     let port = Number(process.env.PORT);
     if (!port) {
@@ -24,8 +24,8 @@ var Pruefungsaufgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        users = mongoClient.db("Pruefungsaufgabe").collection("Users");
-        console.log("Database connection ", users != undefined);
+        picutres = mongoClient.db("Pruefungsaufgabe").collection("Pictures");
+        console.log("Database connection ", picutres != undefined);
     }
     async function handleRequest(_request, _response) {
         console.log("I hear voices!");
@@ -45,8 +45,8 @@ var Pruefungsaufgabe;
         }
         _response.end();
     }
-    function storeUser(_user) {
-        users.insertOne(_user);
+    function storeUser(_picture) {
+        picutres.insertOne(_picture);
     }
 })(Pruefungsaufgabe = exports.Pruefungsaufgabe || (exports.Pruefungsaufgabe = {}));
 //# sourceMappingURL=server.js.map

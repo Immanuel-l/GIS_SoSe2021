@@ -107,7 +107,7 @@ nav ul li a {
 
 .main-form {
     position: absolute;
-    top: 52%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -134,6 +134,15 @@ nav ul li a {
 #admin-form {
     display: flex;
     flex-direction: column;
+}
+
+#error-message {
+    position: absolute;
+    left: 50%;
+    bottom: 150px;
+    transform: translate(-50%, 0);
+    text-align: center;
+    color: darkred;
 }
 
 

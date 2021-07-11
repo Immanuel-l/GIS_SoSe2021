@@ -116,18 +116,24 @@ namespace Pruefungsaufgabe {
         }
     }
 
+    if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
+        let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
+        savePictureButton.addEventListener("click", sendData);
 
-    if (window.location.pathname == "/Pruefungsabgabe/signup.html") {
-        let signupButton: HTMLElement = document.getElementById("signup-button");
-        signupButton.addEventListener("click", sendData);
+        let errorMessage: HTMLElement = document.getElementById("error-message");
 
         async function sendData(): Promise<void> {
-            let url: string = "https://immanuelgis.herokuapp.com/send";
-            let formData: FormData = new FormData(document.forms[0]);
-            let query: URLSearchParams = new URLSearchParams(<any>formData);
-            url += "?" + query.toString();
-            await fetch(url);
-        }
+                let url: string = "https://immanuelgis.herokuapp.com/send";
+                let formData: FormData = new FormData(document.forms[0]);      
+                let query: URLSearchParams = new URLSearchParams(<any>formData);       
+                url += "?" + query.toString();
+                await fetch(url);
+                document.forms[0].submit(); 
+            }
     }
+
+
+
+
 
 }
