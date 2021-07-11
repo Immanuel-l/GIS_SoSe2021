@@ -2,7 +2,7 @@
 var Pruefungsaufgabe;
 (function (Pruefungsaufgabe) {
     console.log(window.location.pathname);
-    if (window.location.pathname == "/Pruefungsabgabe/play.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/play.html") {
         sessionStorage.clear();
         let status = "Started";
         let interval;
@@ -157,7 +157,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/admin.html") {
         let showPicturesDiv = document.getElementById("show-pictures");
         let savePictureButton = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
@@ -203,7 +203,7 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/highscores.html") {
         let userscoreDiv = document.getElementById("userscore-div");
         let usernameDiv = document.getElementById("username-div");
         showhighscores();
@@ -225,11 +225,11 @@ var Pruefungsaufgabe;
             }
         }
     }
-    if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/userscore.html") {
         let userTime = document.getElementById("user-time");
-        userTime.value = 0;
         let yourTime = document.getElementById("your-time");
         let timer = sessionStorage.getItem("endTimer");
+        userTime.value = timer;
         yourTime.textContent = "" + timer;
         let saveUserscoreButton = document.getElementById("save-userscore-button");
         saveUserscoreButton.addEventListener("click", sendUserscore);

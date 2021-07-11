@@ -7,7 +7,7 @@ namespace Pruefungsaufgabe {
         pictureName: string;
     }
 
-    if (window.location.pathname == "/Pruefungsabgabe/play.html") {  
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/play.html") {  
         sessionStorage.clear();
 
         let status: string = "Started";
@@ -190,7 +190,7 @@ namespace Pruefungsaufgabe {
 
     }
 
-    if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/admin.html") {
         let showPicturesDiv: HTMLElement = document.getElementById("show-pictures");
         let savePictureButton: HTMLElement = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
@@ -247,7 +247,7 @@ namespace Pruefungsaufgabe {
 
 
 
-    if (window.location.pathname == "/Pruefungsabgabe/highscores.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/highscores.html") {
         let userscoreDiv: HTMLElement = document.getElementById("userscore-div");
         let usernameDiv: HTMLElement = document.getElementById("username-div");
         showhighscores();
@@ -280,11 +280,11 @@ namespace Pruefungsaufgabe {
     }
 
 
-    if (window.location.pathname == "/Pruefungsabgabe/userscore.html") {
+    if (window.location.pathname == "/GIS_SoSe2021/Pruefungsabgabe/userscore.html") {
         let userTime: HTMLElement = document.getElementById("user-time");
-        userTime.value = 0;
         let yourTime: HTMLElement = document.getElementById("your-time");
         let timer: string = sessionStorage.getItem("endTimer");
+        userTime.value = timer;
         yourTime.textContent = "" + timer; 
 
         let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
