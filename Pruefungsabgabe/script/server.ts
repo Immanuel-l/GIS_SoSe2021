@@ -71,7 +71,7 @@ export namespace Pruefungsaufgabe {
             }
 
             if (url.pathname == "/adduserscore") {
-                highscores.insertOne({"username": url.query.username, "userscore": url.query.userscore});
+                highscores.insertOne({"username": url.query.username, "userscore": 5});
             }
         }
         _response.end();

@@ -206,7 +206,7 @@ nav ul li a {
 /************USERSCORE**************/
 
 #userscore {
-    display: none;
+    display: block;
 }
 
 /*************HIGHSCORES************/
