@@ -37,6 +37,9 @@ var Pruefungsaufgabe;
                 if (await picutres.findOne({ "pictureUrl": url.query.pictureUrl })) {
                     _response.write("Url is already used!");
                 }
+                else if (await picutres.findOne({ "pictureName": url.query.pictureName })) {
+                    _response.write("Name is already used!");
+                }
                 else {
                     picutres.insertOne({ "pictureUrl": url.query.pictureUrl, "pictureName": url.query.pictureName });
                 }

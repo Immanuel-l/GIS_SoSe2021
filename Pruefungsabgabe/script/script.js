@@ -98,6 +98,7 @@ var Pruefungsaufgabe;
         }
     }
     if (window.location.pathname == "/Pruefungsabgabe/admin.html") {
+        let showPicturesDiv = document.getElementById("show-pictures");
         let savePictureButton = document.getElementById("save-picture-button");
         savePictureButton.addEventListener("click", sendPicture);
         showPictures();
@@ -116,21 +117,24 @@ var Pruefungsaufgabe;
             let response = await fetch(url);
             let text = await response.text();
             let json = JSON.parse(text);
+            console.log(json);
             for (let i = 0; i < json.length; i++) {
                 let pictureContainer = document.createElement("div");
                 pictureContainer.setAttribute("class", "picture-container");
                 let pictureName = document.createElement("a");
                 pictureName.setAttribute("class", "picture-name");
-                pictureName.textContent = json[i].name;
-                pictureName.href = json[i].url;
+                pictureName.textContent = json[i].pictureName;
+                // pictureName.href = json[i].pictureUrl;
+                // pictureName.target = "_blank";
                 pictureContainer.appendChild(pictureName);
                 let pictureDeleteButton = document.createElement("button");
-                pictureDeleteButton.setAttribute("class", "student-delete-button");
+                pictureDeleteButton.setAttribute("class", "picture-delete-button");
                 pictureDeleteButton.addEventListener("click", deletePicture);
                 pictureDeleteButton.textContent = "delete";
                 pictureContainer.appendChild(pictureDeleteButton);
+                showPicturesDiv.appendChild(pictureContainer);
                 async function deletePicture() {
-                    let url = "https://immanuelgis.herokuapp.com/delete?pictureName=" + json[i].name;
+                    let url = "https://immanuelgis.herokuapp.com/delete?pictureName=" + json[i].pictureName;
                     await fetch(url);
                     document.location.reload();
                 }
