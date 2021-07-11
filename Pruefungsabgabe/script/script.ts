@@ -273,16 +273,14 @@ namespace Pruefungsaufgabe {
 
         interface Highscore {
             username: string;
-            userscore: string;
+            userscore: number;
         }
     }
 
 
     if (window.location.pathname) {
-        let userTime: HTMLElement = document.getElementById("user-time");
         let yourTime: HTMLElement = document.getElementById("your-time");
         let timer: string = sessionStorage.getItem("endTimer");
-        userTime.value = timer;
         yourTime.textContent = "" + timer; 
 
         let saveUserscoreButton: HTMLElement = document.getElementById("save-userscore-button");
